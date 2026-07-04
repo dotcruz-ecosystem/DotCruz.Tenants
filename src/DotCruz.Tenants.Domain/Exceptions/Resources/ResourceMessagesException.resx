@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NAME_EMPTY" xml:space="preserve">
+    <value>The name cannot be empty.</value>
+  </data>
+  <data name="DOCUMENT_EMPTY" xml:space="preserve">
+    <value>The document number cannot be empty.</value>
+  </data>
+  <data name="DOCUMENT_INVALID" xml:space="preserve">
+    <value>The document number is invalid.</value>
+  </data>
+  <data name="SLUG_EMPTY" xml:space="preserve">
+    <value>The tenant slug cannot be empty.</value>
+  </data>
+  <data name="SLUG_INVALID_LENGTH" xml:space="preserve">
+    <value>The tenant slug must be between 3 and 50 characters.</value>
+  </data>
+  <data name="SLUG_INVALID_FORMAT" xml:space="preserve">
+    <value>The tenant slug must contain only lowercase letters, numbers, and hyphens, and cannot start or end with a hyphen.</value>
+  </data>
+  <data name="SLUG_RESERVED" xml:space="preserve">
+    <value>The slug is a system reserved word.</value>
+  </data>
+  <data name="EMAIL_EMPTY" xml:space="preserve">
+    <value>The contact email is required.</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>The contact email format is invalid.</value>
+  </data>
+  <data name="PHONE_EMPTY" xml:space="preserve">
+    <value>The contact phone is required.</value>
+  </data>
+  <data name="PHONE_INVALID" xml:space="preserve">
+    <value>The phone number must be of valid length (between 8 and 20 digits).</value>
+  </data>
+  <data name="STREET_EMPTY" xml:space="preserve">
+    <value>The street name is required.</value>
+  </data>
+  <data name="NUMBER_EMPTY" xml:space="preserve">
+    <value>The number is required.</value>
+  </data>
+  <data name="NEIGHBORHOOD_EMPTY" xml:space="preserve">
+    <value>The neighborhood is required.</value>
+  </data>
+  <data name="CITY_EMPTY" xml:space="preserve">
+    <value>The city is required.</value>
+  </data>
+  <data name="STATE_INVALID" xml:space="preserve">
+    <value>The state (UF) must be exactly 2 characters.</value>
+  </data>
+  <data name="ZIPCODE_INVALID" xml:space="preserve">
+    <value>The ZIP code must contain exactly 8 digits.</value>
+  </data>
+  <data name="SUBSCRIPTION_END_DATE_INVALID" xml:space="preserve">
+    <value>The subscription end date cannot be earlier than the start date.</value>
+  </data>
+  <data name="SUBSCRIPTION_TRIAL_END_DATE_REQUIRED" xml:space="preserve">
+    <value>Trial subscriptions require a trial end date.</value>
+  </data>
+  <data name="RESOURCE_LIMITS_INVALID" xml:space="preserve">
+    <value>The provided resource limits are invalid.</value>
+  </data>
+  <data name="TENANT_TERMINATED_CANNOT_REACTIVATE" xml:space="preserve">
+    <value>A terminated tenant cannot be reactivated.</value>
+  </data>
+  <data name="SUSPENSION_REASON_EMPTY" xml:space="preserve">
+    <value>The suspension reason must be provided.</value>
+  </data>
+  <data name="TENANT_TERMINATED_CANNOT_SUSPEND" xml:space="preserve">
+    <value>Cannot suspend an already terminated tenant.</value>
+  </data>
+  <data name="TENANT_TERMINATED_CANNOT_DEACTIVATE" xml:space="preserve">
+    <value>Cannot deactivate an already terminated tenant.</value>
+  </data>
+  <data name="TENANT_PAST_DUE_INVALID_STATUS" xml:space="preserve">
+    <value>Only active or trialing tenants can be marked as past due.</value>
+  </data>
+  <data name="PHONE_COUNTRY_CODE_INVALID" xml:space="preserve">
+    <value>The phone country code is invalid.</value>
+  </data>
+  <data name="NAME_INVALID_LENGTH" xml:space="preserve">
+    <value>The name must be between 2 and 100 characters.</value>
+  </data>
+  <data name="SUSPENSION_REASON_INVALID" xml:space="preserve">
+    <value>The suspension reason must be between 5 and 500 characters.</value>
+  </data>
+  <data name="SUBSCRIPTION_REQUIRED" xml:space="preserve">
+    <value>The subscription is required.</value>
+  </data>
+  <data name="CONTACT_REQUIRED" xml:space="preserve">
+    <value>The contact is required.</value>
+  </data>
+  <data name="ADDRESS_REQUIRED" xml:space="preserve">
+    <value>The address is required.</value>
+  </data>
+  <data name="STATE_REQUIRED" xml:space="preserve">
+    <value>The state is required.</value>
+  </data>
+  <data name="ZIPCODE_REQUIRED" xml:space="preserve">
+    <value>The ZIP code is required.</value>
+  </data>
+  <data name="DURATION_REQUIRED" xml:space="preserve">
+    <value>The duration period is required.</value>
+  </data>
+</root>
