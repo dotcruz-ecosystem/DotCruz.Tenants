@@ -7,12 +7,17 @@ public record class State
 {
     public string Value { get; }
 
-    public State(string value)
+    private State(string value)
+    {
+        Value = value;
+    }
+
+    public static State Create(string value)
     {
         if (string.IsNullOrWhiteSpace(value) || value.Trim().Length != 2)
             throw new ErrorOnValidationException(ResourceMessagesException.STATE_INVALID);
 
-        Value = value.Trim().ToUpperInvariant();
+        return new State(value.Trim().ToUpperInvariant());
     }
 
     public override string ToString() => Value;

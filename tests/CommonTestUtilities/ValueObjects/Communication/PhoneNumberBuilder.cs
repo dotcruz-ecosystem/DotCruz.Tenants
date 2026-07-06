@@ -11,10 +11,10 @@ public class PhoneNumberBuilder
         bool isPhoneInvalid = false
     )
     {
-        var faker = new Faker();
+        var faker = new Faker("pt_BR");
 
         var countryCode = !isCountryCodeInvalid ? faker.Random.Int(min: 1, max: 999) : 0;
-        var nationalNumber = !isPhoneEmpty ? faker.Phone.PhoneNumber() : string.Empty;
+        var nationalNumber = !isPhoneEmpty ? faker.Phone.PhoneNumber("###########") : string.Empty;
 
         if (isPhoneInvalid)
             nationalNumber = faker.Lorem.Sentence();
