@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/DotCruz.Tenants.Domain/DotCruz.Tenants.Domain.csproj" />
+    <Project Path="src/DotCruz.Tenants.Infrastructure/DotCruz.Tenants.Infrastructure.csproj" Id="f9f871fe-5b17-446f-996c-19f8ca139d09" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/CommonTestUtilities/CommonTestUtilities.csproj" Id="9578effc-3796-49ae-bb50-2f47d56277e1" />

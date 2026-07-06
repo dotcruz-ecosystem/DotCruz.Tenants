@@ -49,7 +49,6 @@ public class Tenant : BaseEntity
 
         Status = Subscription.Plan == PlanType.Trial ? TenantStatus.Trialing : TenantStatus.Active;
         SuspensionReason = null;
-        Touch();
     }
 
     public void Suspend(SuspensionReason reason)
@@ -67,7 +66,6 @@ public class Tenant : BaseEntity
 
         Status = TenantStatus.Suspended;
         SuspensionReason = reason;
-        Touch();
     }
 
     public void Deactivate()
@@ -76,7 +74,6 @@ public class Tenant : BaseEntity
             throw new ErrorOnValidationException(ResourceMessagesException.TENANT_TERMINATED_CANNOT_DEACTIVATE);
 
         Status = TenantStatus.Inactive;
-        Touch();
     }
 
     public void Terminate()
@@ -92,19 +89,16 @@ public class Tenant : BaseEntity
         if (Status == TenantStatus.Active || Status == TenantStatus.Trialing || Status == TenantStatus.PastDue)
             Status = newSubscription.Plan == PlanType.Trial ? TenantStatus.Trialing : TenantStatus.Active;
         
-        Touch();
     }
 
     public void UpdateContact(TenantContact newContact)
     {
         Contact = newContact ?? throw new ErrorOnValidationException(ResourceMessagesException.CONTACT_REQUIRED);
-        Touch();
     }
 
     public void UpdateAddress(TenantAddress newAddress)
     {
         Address = newAddress ?? throw new ErrorOnValidationException(ResourceMessagesException.ADDRESS_REQUIRED);
-        Touch();
     }
 
     public void MarkPastDue()
@@ -113,6 +107,5 @@ public class Tenant : BaseEntity
             throw new ErrorOnValidationException(ResourceMessagesException.TENANT_PAST_DUE_INVALID_STATUS);
 
         Status = TenantStatus.PastDue;
-        Touch();
     }
 }
