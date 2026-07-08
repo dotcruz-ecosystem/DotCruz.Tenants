@@ -23,6 +23,6 @@ public class SuspensionReasonBuilder
         if (isTooLong)
             value = faker.Random.String2(faker.Random.Number(501, 1000));
 
-        return new SuspensionReason(value);
+        return SuspensionReason.Create(value);
     }
 }

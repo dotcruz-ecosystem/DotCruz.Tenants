@@ -7,7 +7,12 @@ public record class SuspensionReason
 {
     public string Value { get; }
 
-    public SuspensionReason(string value)
+    private SuspensionReason(string value)
+    {
+        Value = value;
+    }
+
+    public static SuspensionReason Create(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
             throw new ErrorOnValidationException(ResourceMessagesException.SUSPENSION_REASON_EMPTY);
@@ -17,7 +22,7 @@ public record class SuspensionReason
         if (cleanValue.Length < 5 || cleanValue.Length > 500)
             throw new ErrorOnValidationException(ResourceMessagesException.SUSPENSION_REASON_INVALID);
 
-        Value = cleanValue;
+        return new SuspensionReason(cleanValue);
     }
 
     public override string ToString() => Value;

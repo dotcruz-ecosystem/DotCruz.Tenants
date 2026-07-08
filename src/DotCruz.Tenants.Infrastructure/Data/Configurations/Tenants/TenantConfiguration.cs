@@ -40,7 +40,7 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
         builder.Property(t => t.SuspensionReason)
             .HasConversion(
                 r => r != null ? r.Value : null,
-                v => v != null ? new SuspensionReason(v) : null
+                v => v != null ? SuspensionReason.Create(v) : null
             )
             .HasMaxLength(500)
             .IsRequired(false);
