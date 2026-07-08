@@ -14,7 +14,25 @@ public record class TenantAddress
     public State State { get; }
     public ZipCode ZipCode { get; }
 
-    public TenantAddress(
+    private TenantAddress(
+        string street,
+        string number,
+        string? complement,
+        string neighborhood,
+        string city,
+        State state,
+        ZipCode zipCode) 
+    {
+        Street = street.Trim();
+        Number = number.Trim();
+        Complement = complement?.Trim();
+        Neighborhood = neighborhood.Trim();
+        City = city.Trim();
+        State = state;
+        ZipCode = zipCode;
+    }
+
+    public static TenantAddress Create(
         string street, 
         string number, 
         string? complement, 
@@ -35,13 +53,13 @@ public record class TenantAddress
         if (string.IsNullOrWhiteSpace(city))
             throw new ErrorOnValidationException(ResourceMessagesException.CITY_EMPTY);
 
-        Street = street.Trim();
-        Number = number.Trim();
-        Complement = complement?.Trim();
-        Neighborhood = neighborhood.Trim();
-        City = city.Trim();
-        State = state ?? throw new ErrorOnValidationException(ResourceMessagesException.STATE_REQUIRED);
-        ZipCode = zipCode ?? throw new ErrorOnValidationException(ResourceMessagesException.ZIPCODE_REQUIRED);
+        if (state == null)
+            throw new ErrorOnValidationException(ResourceMessagesException.STATE_REQUIRED);
+
+        if (zipCode == null)
+            throw new ErrorOnValidationException(ResourceMessagesException.ZIPCODE_REQUIRED);
+
+        return new TenantAddress(street, number, complement, neighborhood, city, state, zipCode);
     }
 
     public override string ToString()

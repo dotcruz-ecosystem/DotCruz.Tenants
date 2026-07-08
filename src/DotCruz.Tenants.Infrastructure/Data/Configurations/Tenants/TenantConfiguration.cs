@@ -30,7 +30,7 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
             .HasMaxLength(30);
 
         builder.Property(t => t.Slug)
-            .HasConversion(s => s.Value, v => new TenantSlug(v))
+            .HasConversion(s => s.Value, v => TenantSlug.Create(v))
             .IsRequired()
             .HasMaxLength(50);
 

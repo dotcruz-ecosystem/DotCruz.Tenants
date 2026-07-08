@@ -6,7 +6,7 @@ namespace DotCruz.Tenants.Infrastructure.Data.Repositories.Base;
 
 public class BaseReadRepository<TEntity>(TenantDbContext context) : IBaseReadRepository<TEntity> where TEntity : BaseEntity
 {
-    private readonly DbSet<TEntity> _dbSet = context.Set<TEntity>();
+    protected readonly DbSet<TEntity> _dbSet = context.Set<TEntity>();
 
     public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken)
     {

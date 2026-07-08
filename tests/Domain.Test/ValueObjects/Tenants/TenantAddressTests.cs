@@ -34,7 +34,7 @@ public class TenantAddressTests
     public void Success_ToString_Without_Complement()
     {
         var baseAddress = TenantAddressBuilder.Build();
-        var address = new TenantAddress(
+        var address = TenantAddress.Create(
             baseAddress.Street,
             baseAddress.Number,
             complement: null,

@@ -37,7 +37,7 @@ public class TenantAddressBuilder
         if (isCityEmpty)
             city = string.Empty;
 
-        return new TenantAddress(
+        return TenantAddress.Create(
             street,
             number,
             complement,

@@ -4,9 +4,11 @@ using System.Text.RegularExpressions;
 
 namespace DotCruz.Tenants.Domain.ValueObjects.Tenants;
 
-public record class TenantSlug
+public partial record class TenantSlug
 {
-    private static readonly Regex SlugRegex = new(@"^[a-z0-9]+(?:-[a-z0-9]+)*$", RegexOptions.Compiled);
+    [GeneratedRegex(@"^[a-z0-9]+(?:-[a-z0-9]+)*$", RegexOptions.Compiled)]
+    private static partial Regex SlugRegex();
+
     private static readonly HashSet<string> ReservedSlugs = new(StringComparer.OrdinalIgnoreCase)
     {
         "admin", "api", "support", "billing", "mail", "portal", "auth", 
@@ -16,7 +18,9 @@ public record class TenantSlug
 
     public string Value { get; }
 
-    public TenantSlug(string value)
+    private TenantSlug(string value) => Value = value;
+
+    public static TenantSlug Create(string value)
     {
         var cleanValue = value?.Trim().ToLowerInvariant();
 
@@ -26,14 +30,15 @@ public record class TenantSlug
         if (cleanValue.Length < 3 || cleanValue.Length > 50)
             throw new ErrorOnValidationException(ResourceMessagesException.SLUG_INVALID_LENGTH);
 
-        if (!SlugRegex.IsMatch(cleanValue))
+        if (!SlugRegex().IsMatch(cleanValue))
             throw new ErrorOnValidationException(ResourceMessagesException.SLUG_INVALID_FORMAT);
 
         if (ReservedSlugs.Contains(cleanValue))
             throw new ErrorOnValidationException(ResourceMessagesException.SLUG_RESERVED);
 
-        Value = cleanValue;
+        return new TenantSlug(cleanValue);
     }
 
     public override string ToString() => Value;
+    public static implicit operator string(TenantSlug slug) => slug.Value;
 }

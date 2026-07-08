@@ -1,4 +1,7 @@
-﻿using DotCruz.Tenants.Infrastructure.Data;
+using DotCruz.Tenants.Application.Abstractions.Data;
+using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
+using DotCruz.Tenants.Infrastructure.Data;
+using DotCruz.Tenants.Infrastructure.Data.Repositories.Tenants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,9 +12,22 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        AddRepositories(services);
+        AddUnitOfWork(services);
         AddDbContext(services, configuration);
 
         return services;
+    }
+
+    private static void AddRepositories(IServiceCollection services)
+    {
+        services.AddScoped<ITenantReadRepository, TenantReadRepository>();
+        services.AddScoped<ITenantWriteRepository, TenantWriteRepository>();
+    }
+
+    private static void AddUnitOfWork(IServiceCollection services)
+    {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)

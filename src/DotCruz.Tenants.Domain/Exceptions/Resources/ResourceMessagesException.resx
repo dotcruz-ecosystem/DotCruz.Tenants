@@ -219,4 +219,13 @@
   <data name="DURATION_REQUIRED" xml:space="preserve">
     <value>The duration period is required.</value>
   </data>
+  <data name="SLUG_ALREADY_EXISTS" xml:space="preserve">
+    <value>The slug already exists.</value>
+  </data>
+  <data name="DOCUMENT_ALREADY_EXISTS" xml:space="preserve">
+    <value>The document number already exists.</value>
+  </data>
+  <data name="DOCUMENT_REQUIRED" xml:space="preserve">
+    <value>The document is required.</value>
+  </data>
 </root>

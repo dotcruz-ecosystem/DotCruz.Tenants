@@ -10,6 +10,6 @@ public class TenantContactBuilder
         var email = EmailBuilder.Build();
         var phone = PhoneNumberBuilder.Build();
 
-        return new TenantContact(email, phone);
+        return TenantContact.Create(email, phone);
     }
 }

@@ -36,6 +36,6 @@ public class TenantSlugBuilder
         if (isReserved)
             slug = faker.Random.ListItem(["admin", "api", "support", "billing", "mail", "portal", "auth", "root", "system"]);
 
-        return new TenantSlug(slug);
+        return TenantSlug.Create(slug);
     }
 }

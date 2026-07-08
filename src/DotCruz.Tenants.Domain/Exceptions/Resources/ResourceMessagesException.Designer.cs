@@ -365,5 +365,32 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
                 return ResourceManager.GetString("DURATION_REQUIRED", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O slug já existe..
+        /// </summary>
+        public static string SLUG_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("SLUG_ALREADY_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O número do documento já existe..
+        /// </summary>
+        public static string DOCUMENT_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("DOCUMENT_ALREADY_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O documento é obrigatório..
+        /// </summary>
+        public static string DOCUMENT_REQUIRED {
+            get {
+                return ResourceManager.GetString("DOCUMENT_REQUIRED", resourceCulture);
+            }
+        }
     }
 }

@@ -20,7 +20,7 @@ public class TenantSlugTests
     [Fact]
     public void Success_Casing_Normalized()
     {
-        var slug = new TenantSlug("My-Awesome-Slug-123");
+        var slug = TenantSlug.Create("My-Awesome-Slug-123");
 
         Assert.Equal("my-awesome-slug-123", slug.Value);
     }
