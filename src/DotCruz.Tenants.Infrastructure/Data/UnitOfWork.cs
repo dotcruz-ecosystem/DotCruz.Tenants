@@ -1,6 +1,8 @@
-﻿namespace DotCruz.Tenants.Infrastructure.Data;
+﻿using DotCruz.Tenants.Application.Abstractions.Data;
 
-public class UnitOfWork(TenantDbContext context)
+namespace DotCruz.Tenants.Infrastructure.Data;
+
+public class UnitOfWork(TenantDbContext context) : IUnitOfWork
 {
     public async Task CommitAsync(CancellationToken cancellationToken)
     {

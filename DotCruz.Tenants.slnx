@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/DotCruz.Tenants.Application/DotCruz.Tenants.Application.csproj" Id="eefd0f1a-d164-4307-a363-20301db9f22a" />
     <Project Path="src/DotCruz.Tenants.Domain/DotCruz.Tenants.Domain.csproj" />
     <Project Path="src/DotCruz.Tenants.Infrastructure/DotCruz.Tenants.Infrastructure.csproj" Id="f9f871fe-5b17-446f-996c-19f8ca139d09" />
   </Folder>
