@@ -1,4 +1,4 @@
-﻿using DotCruz.Tenants.Application.DTOs.Tenants;
+using DotCruz.Tenants.Application.DTOs.Tenants;
 using DotCruz.Tenants.Application.Mappers.Fiscal;
 using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
 using DotCruz.Tenants.Domain.Entities.Tenants;
@@ -19,6 +19,23 @@ public static class TenantMapper
             tenantCommand.TenantDocument.ToDomain(),
             tenantCommand.TenantContact.ToDomain(),
             tenantCommand.TenantAddress.ToDomain()
+        );
+    }
+
+    public static TenantDto ToDto(this Tenant tenant)
+    {
+        return new TenantDto(
+            tenant.Id,
+            tenant.Name.Value,
+            tenant.Slug.Value,
+            tenant.Document.ToDto(),
+            tenant.Status.ToString(),
+            tenant.Contact.ToDto(),
+            tenant.Address.ToDto(),
+            tenant.Subscription.ToDto(),
+            tenant.SuspensionReason?.Value,
+            tenant.CreatedAt,
+            tenant.UpdatedAt
         );
     }
 }

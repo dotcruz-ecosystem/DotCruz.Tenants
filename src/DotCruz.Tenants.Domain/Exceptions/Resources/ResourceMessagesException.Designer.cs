@@ -419,5 +419,23 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
                 return ResourceManager.GetString("PLAN_INVALID", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O número da página deve ser maior ou igual a 1..
+        /// </summary>
+        public static string PAGE_NUMBER_INVALID {
+            get {
+                return ResourceManager.GetString("PAGE_NUMBER_INVALID", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O tamanho da página deve estar entre 1 e 100..
+        /// </summary>
+        public static string PAGE_SIZE_INVALID {
+            get {
+                return ResourceManager.GetString("PAGE_SIZE_INVALID", resourceCulture);
+            }
+        }
     }
 }
