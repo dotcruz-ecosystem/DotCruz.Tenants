@@ -49,7 +49,7 @@ public class CreateTenantCommandHandlerTests
 
     private static CreateTenantCommandHandler CreateHandler(string? slug = null, string? document = null)
     {
-        var tenantWriteRepository = TenantWriteRepositoryBuilder.Build();
+        var tenantWriteRepository = new TenantWriteRepositoryBuilder().Build();
         var tenantReadRepository = new TenantReadRepositoryBuilder();
         var unitOfWork = UnitOfWorkerBuilder.Build();
 

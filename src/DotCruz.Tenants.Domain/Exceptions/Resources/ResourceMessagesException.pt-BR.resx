@@ -228,4 +228,13 @@
   <data name="DOCUMENT_REQUIRED" xml:space="preserve">
     <value>O documento é obrigatório.</value>
   </data>
+  <data name="TENANT_NOT_FOUND" xml:space="preserve">
+    <value>Tenant não encontrado.</value>
+  </data>
+  <data name="ID_EMPTY" xml:space="preserve">
+    <value>O ID é obrigatório.</value>
+  </data>
+  <data name="PLAN_INVALID" xml:space="preserve">
+    <value>O plano selecionado é inválido.</value>
+  </data>
 </root>

@@ -1,14 +1,18 @@
-﻿using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
+using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
+using DotCruz.Tenants.Domain.Entities.Tenants;
 using Moq;
 
 namespace CommonTestUtilities.Data.Repositories.Tenants;
 
 public class TenantWriteRepositoryBuilder
 {
-    public static ITenantWriteRepository Build()
-    {
-        var tenantWriteRepositoryMock = new Mock<ITenantWriteRepository>();
+    private readonly Mock<ITenantWriteRepository> _repository = new();
 
-        return tenantWriteRepositoryMock.Object;
+    public void GetByIdToUpdate(Tenant tenant, CancellationToken cancellationToken)
+    {
+        _repository.Setup(x => x.GetByIdToUpdateAsync(tenant.Id, cancellationToken))
+            .ReturnsAsync(tenant);
     }
+
+    public ITenantWriteRepository Build() => _repository.Object;
 }

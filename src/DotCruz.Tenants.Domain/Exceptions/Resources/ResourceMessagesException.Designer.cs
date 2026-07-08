@@ -392,5 +392,32 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
                 return ResourceManager.GetString("DOCUMENT_REQUIRED", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Tenant não encontrado..
+        /// </summary>
+        public static string TENANT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("TENANT_NOT_FOUND", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O ID é obrigatório..
+        /// </summary>
+        public static string ID_EMPTY {
+            get {
+                return ResourceManager.GetString("ID_EMPTY", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O plano selecionado é inválido..
+        /// </summary>
+        public static string PLAN_INVALID {
+            get {
+                return ResourceManager.GetString("PLAN_INVALID", resourceCulture);
+            }
+        }
     }
 }
