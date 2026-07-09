@@ -160,6 +160,15 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a External integration error ({0}): {1}.
+        /// </summary>
+        public static string EXTERNAL_INTEGRATION_ERROR {
+            get {
+                return ResourceManager.GetString("EXTERNAL_INTEGRATION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The ID is required..
         /// </summary>
         public static string ID_EMPTY {
@@ -426,6 +435,24 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         public static string TENANT_TERMINATED_CANNOT_SUSPEND {
             get {
                 return ResourceManager.GetString("TENANT_TERMINATED_CANNOT_SUSPEND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Unknown Error..
+        /// </summary>
+        public static string UNKNOWN_ERROR {
+            get {
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a An unknown error occurred in the CoreAuth API..
+        /// </summary>
+        public static string UNKNOWN_ERROR_CORE_AUTH {
+            get {
+                return ResourceManager.GetString("UNKNOWN_ERROR_CORE_AUTH", resourceCulture);
             }
         }
         

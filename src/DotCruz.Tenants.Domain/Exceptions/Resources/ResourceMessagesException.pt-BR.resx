@@ -246,4 +246,13 @@
   <data name="ADMIN_USER_REQUIRED" xml:space="preserve">
     <value>O usuário administrador é obrigatório</value>
   </data>
+  <data name="UNKNOWN_ERROR_CORE_AUTH" xml:space="preserve">
+    <value>Ocorreu um erro desconhecido na API do CoreAuth.</value>
+  </data>
+  <data name="EXTERNAL_INTEGRATION_ERROR" xml:space="preserve">
+    <value>Erro de integração externa ({0}): {1}</value>
+  </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Erro desconhecido.</value>
+  </data>
 </root>

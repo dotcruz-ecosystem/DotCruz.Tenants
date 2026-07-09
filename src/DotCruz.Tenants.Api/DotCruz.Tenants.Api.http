@@ -1,0 +1,6 @@
+@DotCruz.Tenants.Api_HostAddress = http://localhost:5142
+
+GET {{DotCruz.Tenants.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

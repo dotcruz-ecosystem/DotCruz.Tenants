@@ -246,4 +246,13 @@
   <data name="ADMIN_USER_REQUIRED" xml:space="preserve">
     <value>The admin user is required</value>
   </data>
+  <data name="UNKNOWN_ERROR_CORE_AUTH" xml:space="preserve">
+    <value>An unknown error occurred in the CoreAuth API.</value>
+  </data>
+  <data name="EXTERNAL_INTEGRATION_ERROR" xml:space="preserve">
+    <value>External integration error ({0}): {1}</value>
+  </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Unknown Error.</value>
+  </data>
 </root>

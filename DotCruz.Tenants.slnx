@@ -1,6 +1,11 @@
 <Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path=".gitignore" />
+  </Folder>
   <Folder Name="/src/">
+    <Project Path="src/DotCruz.Tenants.Api/DotCruz.Tenants.Api.csproj" Id="9aed4353-fd3f-4b2d-b97e-a7e77cf08826" />
     <Project Path="src/DotCruz.Tenants.Application/DotCruz.Tenants.Application.csproj" Id="eefd0f1a-d164-4307-a363-20301db9f22a" />
+    <Project Path="src/DotCruz.Tenants.CrossCutting/DotCruz.Tenants.CrossCutting.csproj" Id="8433c3d3-bdf8-4e1e-b3c0-36e37edb8754" />
     <Project Path="src/DotCruz.Tenants.Domain/DotCruz.Tenants.Domain.csproj" />
     <Project Path="src/DotCruz.Tenants.Infrastructure/DotCruz.Tenants.Infrastructure.csproj" Id="f9f871fe-5b17-446f-996c-19f8ca139d09" />
   </Folder>
