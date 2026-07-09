@@ -1,7 +1,7 @@
 using Bogus;
 using CommonTestUtilities.DTOs.Fiscal;
 using CommonTestUtilities.DTOs.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using DotCruz.Tenants.Domain.Enums.Tenants;
 
 namespace CommonTestUtilities.Commands.Tenants;

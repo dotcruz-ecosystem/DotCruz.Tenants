@@ -1,4 +1,4 @@
-﻿using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
+﻿using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using MediatR;
 
 namespace DotCruz.Tenants.Application.Events.CreatedTenant;

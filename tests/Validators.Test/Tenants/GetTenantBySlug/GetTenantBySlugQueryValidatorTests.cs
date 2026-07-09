@@ -1,5 +1,5 @@
 using CommonTestUtilities.Queries.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.GetTenantBySlug;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantBySlug;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
 namespace Validators.Test.Tenants.GetTenantBySlug;

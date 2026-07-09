@@ -1,5 +1,5 @@
 using CommonTestUtilities.Queries.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.SearchTenants;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
 namespace Validators.Test.Tenants.SearchTenants;

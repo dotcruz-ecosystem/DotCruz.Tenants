@@ -1,5 +1,5 @@
 using CommonTestUtilities.Commands.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.TerminateTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.TerminateTenant;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
 namespace Validators.Test.Tenants.TerminateTenant;

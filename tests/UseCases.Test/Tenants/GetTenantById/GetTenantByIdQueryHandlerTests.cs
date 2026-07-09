@@ -1,10 +1,10 @@
 using CommonTestUtilities.Entities;
 using CommonTestUtilities.Queries.Tenants;
 using CommonTestUtilities.Data.Repositories.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.GetTenantById;
 using DotCruz.Tenants.Domain.Entities.Tenants;
 using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantById;
 
 namespace UseCases.Test.Tenants.GetTenantById;
 

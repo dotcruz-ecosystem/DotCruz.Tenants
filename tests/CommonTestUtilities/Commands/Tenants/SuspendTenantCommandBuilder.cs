@@ -1,5 +1,5 @@
 using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.SuspendTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.SuspendTenant;
 
 namespace CommonTestUtilities.Commands.Tenants;
 

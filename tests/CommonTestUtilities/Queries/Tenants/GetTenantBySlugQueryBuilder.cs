@@ -1,5 +1,5 @@
 using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.GetTenantBySlug;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantBySlug;
 
 namespace CommonTestUtilities.Queries.Tenants;
 

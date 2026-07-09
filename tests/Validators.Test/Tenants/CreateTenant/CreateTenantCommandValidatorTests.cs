@@ -1,5 +1,5 @@
 using CommonTestUtilities.Commands.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
 namespace Validators.Test.Tenants.CreateTenant;

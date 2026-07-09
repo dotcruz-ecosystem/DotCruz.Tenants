@@ -1,5 +1,5 @@
 using CommonTestUtilities.Commands.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.SuspendTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.SuspendTenant;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
 namespace Validators.Test.Tenants.SuspendTenant;

@@ -1,5 +1,5 @@
 using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.SearchTenants;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
 using DotCruz.Tenants.Domain.Enums.Tenants;
 
 namespace CommonTestUtilities.Queries.Tenants;

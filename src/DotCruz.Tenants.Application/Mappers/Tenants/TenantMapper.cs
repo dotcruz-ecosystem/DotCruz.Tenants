@@ -1,6 +1,6 @@
 using DotCruz.Tenants.Application.DTOs.Tenants;
 using DotCruz.Tenants.Application.Mappers.Fiscal;
-using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using DotCruz.Tenants.Domain.Entities.Tenants;
 using DotCruz.Tenants.Domain.ValueObjects.Identity;
 using DotCruz.Tenants.Domain.ValueObjects.Location;

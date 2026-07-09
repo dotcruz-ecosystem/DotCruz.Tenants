@@ -2,7 +2,7 @@ using CommonTestUtilities.Commands.Tenants;
 using CommonTestUtilities.Data;
 using CommonTestUtilities.Data.Repositories.Tenants;
 using CommonTestUtilities.Entities;
-using DotCruz.Tenants.Application.UseCases.Tenants.UpdateTenantSubscription;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantSubscription;
 using DotCruz.Tenants.Domain.Entities.Tenants;
 using DotCruz.Tenants.Domain.Enums.Tenants;
 using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;

@@ -1,8 +1,8 @@
 using CommonTestUtilities.Entities;
 using CommonTestUtilities.Queries.Tenants;
 using CommonTestUtilities.Data.Repositories.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.SearchTenants;
 using DotCruz.Tenants.Domain.Entities.Tenants;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
 
 namespace UseCases.Test.Tenants.SearchTenants;
 

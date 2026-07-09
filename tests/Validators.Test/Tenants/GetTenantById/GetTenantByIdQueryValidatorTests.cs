@@ -1,5 +1,5 @@
 using CommonTestUtilities.Queries.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.GetTenantById;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantById;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
 namespace Validators.Test.Tenants.GetTenantById;

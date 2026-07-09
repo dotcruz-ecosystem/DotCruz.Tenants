@@ -1,5 +1,5 @@
 using CommonTestUtilities.Commands.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.UpdateTenantContact;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantContact;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
 namespace Validators.Test.Tenants.UpdateTenantContact;

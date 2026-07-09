@@ -1,6 +1,6 @@
 using Bogus;
 using CommonTestUtilities.DTOs.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.UpdateTenantContact;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantContact;
 
 namespace CommonTestUtilities.Commands.Tenants;
 

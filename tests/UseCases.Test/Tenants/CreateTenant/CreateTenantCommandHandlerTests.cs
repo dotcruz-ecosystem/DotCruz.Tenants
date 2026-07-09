@@ -3,7 +3,7 @@ using CommonTestUtilities.Data;
 using CommonTestUtilities.Data.Repositories.Tenants;
 using CommonTestUtilities.Services;
 using DotCruz.Tenants.Application.Mappers.Fiscal;
-using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
 using DotCruz.Tenants.Domain.Exceptions.Resources;
 
