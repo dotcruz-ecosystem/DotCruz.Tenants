@@ -1,6 +1,7 @@
 using CommonTestUtilities.Commands.Tenants;
 using CommonTestUtilities.Data;
 using CommonTestUtilities.Data.Repositories.Tenants;
+using CommonTestUtilities.Services;
 using DotCruz.Tenants.Application.Mappers.Fiscal;
 using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
 using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
@@ -52,6 +53,7 @@ public class CreateTenantCommandHandlerTests
         var tenantWriteRepository = new TenantWriteRepositoryBuilder().Build();
         var tenantReadRepository = new TenantReadRepositoryBuilder();
         var unitOfWork = UnitOfWorkerBuilder.Build();
+        var mediator = MediatorBuilder.Build();
 
         if (!string.IsNullOrEmpty(slug))
             tenantReadRepository.ExistsWithSlugAsync(slug, TestContext.Current.CancellationToken);
@@ -62,7 +64,8 @@ public class CreateTenantCommandHandlerTests
         return new CreateTenantCommandHandler(
             tenantWriteRepository,
             tenantReadRepository.Build(),
-            unitOfWork
+            unitOfWork,
+            mediator
         );
     }
 }

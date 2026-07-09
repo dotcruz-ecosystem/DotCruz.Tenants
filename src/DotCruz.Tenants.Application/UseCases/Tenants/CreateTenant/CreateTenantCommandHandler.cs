@@ -1,5 +1,6 @@
 using DotCruz.Tenants.Application.Abstractions.Data;
 using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
+using DotCruz.Tenants.Application.Events.CreatedTenant;
 using DotCruz.Tenants.Application.Mappers.Fiscal;
 using DotCruz.Tenants.Application.Mappers.Tenants;
 using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
@@ -13,15 +14,18 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, G
     private readonly ITenantWriteRepository _tenantWriteRepository;
     private readonly ITenantReadRepository _tenantReadRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMediator _mediator;
 
     public CreateTenantCommandHandler(
         ITenantWriteRepository tenantWriteRepository,
         ITenantReadRepository tenantReadRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IMediator mediator)
     {
         _tenantWriteRepository = tenantWriteRepository;
         _tenantReadRepository = tenantReadRepository;
         _unitOfWork = unitOfWork;
+        _mediator = mediator;
     }
 
     public async Task<Guid> Handle(CreateTenantCommand request, CancellationToken cancellationToken)
@@ -31,6 +35,9 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, G
         var tenant = request.ToDomain();
 
         await _tenantWriteRepository.AddAsync(tenant);
+
+        await _mediator.Publish(new CreatedTenantEvent(tenant.Id, request), cancellationToken);
+
         await _unitOfWork.CommitAsync(cancellationToken);
 
         return tenant.Id;

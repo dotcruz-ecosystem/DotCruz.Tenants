@@ -1,4 +1,4 @@
-﻿using Bogus;
+using Bogus;
 using CommonTestUtilities.DTOs.Fiscal;
 using CommonTestUtilities.DTOs.Tenants;
 using DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
@@ -28,23 +28,32 @@ public class CreateTenantCommandBuilder
         bool isNeighborhoodEmpty = false,
         bool isCityEmpty = false,
         bool isStateEmpty = false,
-        bool isZipCodeEmpty = false
+        bool isZipCodeEmpty = false,
+
+        bool isTenantAdminUserNull = false,
+        bool isAdminUserNameEmpty = false,
+        bool isAdminUserNameInvalid = false,
+        bool isAdminUserEmailEmpty = false,
+        bool isAdminUserEmailInvalid = false
     )
     {
         var faker = new Faker<CreateTenantCommand>()
             .CustomInstantiator(f => new CreateTenantCommand(
                 Name: !isNameEmpty ? f.Company.CompanyName() : string.Empty,
-                Slug: !isSlugEmpty ? f.Internet.DomainWord() : string.Empty,
+                Slug: !isSlugEmpty ? f.Internet.DomainWord() + "xyz" : string.Empty,
+
                 TenantDocument: isTenantDocumentNull ? null! : FiscalDocumentDtoBuilder.Build(
                     type: documentType, 
                     isDocumentEmpty: isDocumentEmpty, 
                     isTypeInvalid: isTypeInvalid
                 ),
+
                 TenantContact: isTenantContactNull ? null! : TenantContactDtoBuilder.Build(
                     isEmailEmpty: isEmailEmpty, 
                     isCountryCodeInvalid: isCountryCodeInvalid, 
                     isPhoneEmpty: isPhoneEmpty
                 ),
+
                 TenantAddress: isTenantAddressNull ? null! : TenantAddressDtoBuilder.Build(
                     isStreetEmpty: isStreetEmpty,
                     isNumberEmpty: isNumberEmpty,
@@ -52,6 +61,13 @@ public class CreateTenantCommandBuilder
                     isCityEmpty: isCityEmpty,
                     isStateEmpty: isStateEmpty,
                     isZipCodeEmpty: isZipCodeEmpty
+                ),
+
+                TenantAdminUser: isTenantAdminUserNull ? null! : TenantAdminUserDtoBuilder.Build(
+                    isAdminNameEmpty: isAdminUserNameEmpty,
+                    isAdminNameInvalid: isAdminUserNameInvalid,
+                    isAdminEmailEmpty: isAdminUserEmailEmpty,
+                    isAdminEmailInvalid: isAdminUserEmailInvalid
                 )
             ));
 

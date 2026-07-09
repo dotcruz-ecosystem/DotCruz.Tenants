@@ -1,7 +1,9 @@
 using DotCruz.Tenants.Application.Abstractions.Data;
 using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
+using DotCruz.Tenants.Application.Abstractions.Services.CoreAuth;
 using DotCruz.Tenants.Infrastructure.Data;
 using DotCruz.Tenants.Infrastructure.Data.Repositories.Tenants;
+using DotCruz.Tenants.Infrastructure.Services.CoreAuth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,7 @@ public static class DependencyInjection
         AddRepositories(services);
         AddUnitOfWork(services);
         AddDbContext(services, configuration);
+        AddServices(services, configuration);
 
         return services;
     }
@@ -38,6 +41,18 @@ public static class DependencyInjection
         {
             opt.UseNpgsql(connectionString);
             opt.UseSnakeCaseNamingConvention();
+        });
+    }
+
+    private static void AddServices(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddHttpClient<ICoreAuthClient, CoreAuthClient>(client =>
+        {
+            var baseAddress = configuration["CoreAuth:BaseAddress"];
+            if (!string.IsNullOrEmpty(baseAddress))
+            {
+                client.BaseAddress = new Uri(baseAddress);
+            }
         });
     }
 }

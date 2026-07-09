@@ -4,10 +4,11 @@ using MediatR;
 
 namespace DotCruz.Tenants.Application.UseCases.Tenants.CreateTenant;
 
-public record CreateTenantCommand(
+public sealed record CreateTenantCommand(
     string Name,
     string Slug,
     FiscalDocumentDto TenantDocument,
     TenantContactDto TenantContact,
-    TenantAddressDto TenantAddress
+    TenantAddressDto TenantAddress,
+    TenantAdminUserDto TenantAdminUser
 ) : IRequest<Guid>;

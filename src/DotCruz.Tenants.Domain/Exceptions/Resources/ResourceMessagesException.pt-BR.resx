@@ -243,4 +243,7 @@
   <data name="PAGE_SIZE_INVALID" xml:space="preserve">
     <value>O tamanho da página deve estar entre 1 e 100.</value>
   </data>
+  <data name="ADMIN_USER_REQUIRED" xml:space="preserve">
+    <value>O usuário administrador é obrigatório</value>
+  </data>
 </root>

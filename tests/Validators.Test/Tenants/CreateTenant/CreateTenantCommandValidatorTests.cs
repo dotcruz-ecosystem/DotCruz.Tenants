@@ -195,4 +195,63 @@ public class CreateTenantCommandValidatorTests
         var error = Assert.Single(result.Errors);
         Assert.Equal(ResourceMessagesException.ADDRESS_REQUIRED, error.ErrorMessage);
     }
+
+    [Fact]
+    public void Error_Tenant_User_Admin_Null()
+    {
+        var request = CreateTenantCommandBuilder.Build(isTenantAdminUserNull: true);
+
+        var result = new CreateTenantCommandValidator().Validate(request);
+
+        Assert.False(result.IsValid);
+        var error = Assert.Single(result.Errors);
+        Assert.Equal(ResourceMessagesException.ADMIN_USER_REQUIRED, error.ErrorMessage);
+    }
+
+    [Fact]
+    public void Error_Tenant_User_Admin_Name_Empty()
+    {
+        var request = CreateTenantCommandBuilder.Build(isAdminUserNameEmpty: true);
+
+        var result = new CreateTenantCommandValidator().Validate(request);
+
+        Assert.False(result.IsValid);
+        var error = Assert.Single(result.Errors);
+        Assert.Equal(ResourceMessagesException.NAME_EMPTY, error.ErrorMessage);
+    }
+
+    [Fact]
+    public void Error_Tenant_User_Admin_Name_Invalid()
+    {
+        var request = CreateTenantCommandBuilder.Build(isAdminUserNameInvalid: true);
+
+        var result = new CreateTenantCommandValidator().Validate(request);
+
+        Assert.False(result.IsValid);
+        var error = Assert.Single(result.Errors);
+        Assert.Equal(ResourceMessagesException.NAME_INVALID_LENGTH, error.ErrorMessage);
+    }
+
+    [Fact]
+    public void Error_Tenant_User_Admin_Email_Empty()
+    {
+        var request = CreateTenantCommandBuilder.Build(isAdminUserEmailEmpty: true);
+
+        var result = new CreateTenantCommandValidator().Validate(request);
+
+        Assert.False(result.IsValid);
+        Assert.Contains(result.Errors, e => e.ErrorMessage == ResourceMessagesException.EMAIL_EMPTY);
+    }
+
+    [Fact]
+    public void Error_Tenant_User_Admin_Email_Invalid()
+    {
+        var request = CreateTenantCommandBuilder.Build(isAdminUserEmailInvalid: true);
+
+        var result = new CreateTenantCommandValidator().Validate(request);
+
+        Assert.False(result.IsValid);
+        var error = Assert.Single(result.Errors);
+        Assert.Equal(ResourceMessagesException.EMAIL_INVALID, error.ErrorMessage);
+    }
 }

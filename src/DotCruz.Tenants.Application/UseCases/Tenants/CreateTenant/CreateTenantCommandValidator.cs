@@ -80,5 +80,19 @@ public class CreateTenantCommandValidator : AbstractValidator<CreateTenantComman
                 .NotEmpty().WithMessage(ResourceMessagesException.ZIPCODE_REQUIRED)
                 .MustBeValid(ZipCode.Create);
         });
+
+        RuleFor(x => x.TenantAdminUser)
+            .NotNull().WithMessage(ResourceMessagesException.ADMIN_USER_REQUIRED);
+
+        When(x => x.TenantAdminUser != null, () =>
+        {
+            RuleFor(x => x.TenantAdminUser.AdminName)
+                .NotEmpty().WithMessage(ResourceMessagesException.NAME_EMPTY)
+                .MustBeValid(Name.Create);
+
+            RuleFor(x => x.TenantAdminUser.AdminEmail)
+                .NotEmpty().WithMessage(ResourceMessagesException.EMAIL_EMPTY)
+                .MustBeValid(Email.Create);
+        });
     }
 }
