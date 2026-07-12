@@ -60,19 +60,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Debug Connection Secrets
-        run: |
-          if [ -z "${{ secrets.VPS_HOST }}" ]; then
-            echo "❌ VPS_HOST is EMPTY!"
-          else
-            echo "✅ VPS_HOST is present"
-          fi
-          if [ -z "${{ secrets.VPS_PORT }}" ]; then
-            echo "❌ VPS_PORT is EMPTY!"
-          else
-            echo "✅ VPS_PORT is present"
-          fi
-
       - name: Create Remote Directory
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -104,7 +91,8 @@ jobs:
             cd ${{ secrets.VPS_TENANTS_DEPLOY_PATH }}
             
             chmod +x tenants-bundle
-            ./tenants-bundle --connection "${{ secrets.TENANTS_CONNECTION_STRING }}"
+            CONNECTION_STG=$(echo "${{ secrets.TENANTS_CONNECTION_STRING }}" | sed 's/Host=dotcruz-postgres/Host=localhost/I')
+            ./tenants-bundle --connection "$CONNECTION_STG"
             rm -f tenants-bundle
             
             mv -f docker-compose.prod.yml docker-compose.yml 2>/dev/null || true
