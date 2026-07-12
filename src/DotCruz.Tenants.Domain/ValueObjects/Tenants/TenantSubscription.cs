@@ -7,13 +7,15 @@ namespace DotCruz.Tenants.Domain.ValueObjects.Tenants;
 
 public record class TenantSubscription
 {
-    public PlanType Plan { get; }
-    public DateTimePeriod Duration { get; }
-    public DateTimeOffset? TrialEndDate { get; }
-    public ResourceLimits Limits { get; }
+    public PlanType Plan { get; init; }
+    public DateTimePeriod Duration { get; init; } = null!;
+    public DateTimeOffset? TrialEndDate { get; init; }
+    public ResourceLimits Limits { get; init; } = null!;
 
     public DateTimeOffset StartDate => Duration.Start;
     public DateTimeOffset? EndDate => Duration.End;
+
+    private TenantSubscription() { }
 
     public TenantSubscription(
         PlanType plan, 

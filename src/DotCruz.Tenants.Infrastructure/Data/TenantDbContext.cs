@@ -1,4 +1,4 @@
-﻿using DotCruz.Tenants.Domain.Entities.Base;
+using DotCruz.Tenants.Domain.Entities.Base;
 using DotCruz.Tenants.Domain.Entities.Tenants;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -12,6 +12,7 @@ public class TenantDbContext(DbContextOptions<TenantDbContext> options) : DbCont
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.HasPostgresExtension("citext");
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TenantDbContext).Assembly);
 
         foreach (var entityType in modelBuilder.Model.GetEntityTypes()

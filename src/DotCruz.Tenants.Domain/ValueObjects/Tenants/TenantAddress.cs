@@ -6,13 +6,15 @@ namespace DotCruz.Tenants.Domain.ValueObjects.Tenants;
 
 public record class TenantAddress
 {
-    public string Street { get; }
-    public string Number { get; }
-    public string? Complement { get; }
-    public string Neighborhood { get; }
-    public string City { get; }
-    public State State { get; }
-    public ZipCode ZipCode { get; }
+    public string Street { get; init; } = null!;
+    public string Number { get; init; } = null!;
+    public string? Complement { get; init; }
+    public string Neighborhood { get; init; } = null!;
+    public string City { get; init; } = null!;
+    public State State { get; init; } = null!;
+    public ZipCode ZipCode { get; init; } = null!;
+
+    private TenantAddress() { }
 
     private TenantAddress(
         string street,

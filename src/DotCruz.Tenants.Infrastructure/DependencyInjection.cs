@@ -53,6 +53,7 @@ public static class DependencyInjection
             {
                 client.BaseAddress = new Uri(baseAddress);
             }
-        });
+        })
+        .AddServiceApiKeyPropagation();
     }
 }

@@ -4,17 +4,19 @@ namespace DotCruz.Tenants.Domain.ValueObjects.Tenants;
 
 public record class TenantContact
 {
-    public Email Email { get; }
-    public PhoneNumber Phone { get; }
+    public Email Email { get; init; } = null!;
+    public PhoneNumber Phone { get; init; } = null!;
 
-    private TenantContact(Email email, PhoneNumber phoneNumber)
+    private TenantContact() { }
+
+    private TenantContact(Email email, PhoneNumber phone)
     {
         Email = email;
-        Phone = phoneNumber;
+        Phone = phone;
     }
 
-    public static TenantContact Create(Email email, PhoneNumber phoneNumber)
+    public static TenantContact Create(Email email, PhoneNumber phone)
     {
-        return new TenantContact(email, phoneNumber);
+        return new TenantContact(email, phone);
     }
 }

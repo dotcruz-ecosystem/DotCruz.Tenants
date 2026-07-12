@@ -1,9 +1,10 @@
-﻿using DotCruz.Tenants.Api.Handlers;
+using DotCruz.Tenants.Api.Handlers;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Globalization;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace DotCruz.Tenants.Api.Configurations;
@@ -16,6 +17,7 @@ public static class ApiConventionsConfiguration
         {
             options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
             options.SerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.SnakeCaseLower;
+            options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
         });
 
         return services
@@ -30,6 +32,7 @@ public static class ApiConventionsConfiguration
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
                 options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.SnakeCaseLower;
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
     }
 

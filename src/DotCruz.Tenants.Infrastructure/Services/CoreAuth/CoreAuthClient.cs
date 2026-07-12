@@ -20,7 +20,14 @@ public class CoreAuthClient(HttpClient httpClient) : ICoreAuthClient
 
     public async Task CreateTenantAdminUser(CreateTenantAdminUserRequestDto requestDto, CancellationToken cancellationToken)
     {
-        var response = await httpClient.PostAsJsonAsync(CREATE_USER_ENDPOINT, requestDto, _serializerOptions, cancellationToken);
+        using var request = new HttpRequestMessage(HttpMethod.Post, CREATE_USER_ENDPOINT)
+        {
+            Content = JsonContent.Create(requestDto, options: _serializerOptions)
+        };
+
+        request.Headers.Add("X-Tenant-ID", requestDto.TenantId.ToString());
+
+        var response = await httpClient.SendAsync(request, cancellationToken);
 
         if (!response.IsSuccessStatusCode)
             await HandleErrorResponse(response, cancellationToken);

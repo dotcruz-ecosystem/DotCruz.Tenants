@@ -8,13 +8,19 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.OpenApi" Version="2.10.0" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.16.11" />
+    <PackageReference Include="DotCruz.Shared.Security" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DotCruz.Tenants.Application\DotCruz.Tenants.Application.csproj" />
     <ProjectReference Include="..\DotCruz.Tenants.CrossCutting\DotCruz.Tenants.CrossCutting.csproj" />
+    <ProjectReference Include="..\DotCruz.Tenants.Infrastructure\DotCruz.Tenants.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
