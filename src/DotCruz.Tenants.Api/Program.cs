@@ -12,6 +12,22 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddSharedSecurity(builder.Configuration);
 
+// Sobrescreve as políticas do Shared Security para permitir acesso do SuperAdmin
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(DotCruz.Shared.Security.Authorization.SecurityPolicies.AdminOnly, policy =>
+    {
+        policy.AddAuthenticationSchemes(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
+        policy.RequireRole("Admin", "SuperAdmin");
+    });
+
+    options.AddPolicy(DotCruz.Shared.Security.Authorization.SecurityPolicies.TenantAdminOrAdmin, policy =>
+    {
+        policy.AddAuthenticationSchemes(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
+        policy.RequireRole("TenantAdmin", "Admin", "SuperAdmin");
+    });
+});
+
 builder.Services.AddExceptionHandler<TenantExceptionHandler>();
 builder.Services.AddApiConventions();
 builder.Services.AddOpenApiDocumentation();
@@ -22,9 +38,6 @@ var app = builder.Build();
 app.UseExceptionHandler();
 
 app.MapOpenApiDocumentation();
-
-
-app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
