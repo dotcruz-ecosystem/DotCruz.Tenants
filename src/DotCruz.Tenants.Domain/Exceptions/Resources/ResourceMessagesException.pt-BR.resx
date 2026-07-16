@@ -276,7 +276,19 @@
   <data name="HEADER_BACKGROUND_COLOR_INVALID" xml:space="preserve">
     <value>A cor de fundo do cabeçalho deve ser uma cor hexadecimal válida.</value>
   </data>
+  <data name="FILENAME_EMPTY" xml:space="preserve">
+    <value>O nome do arquivo é obrigatório.</value>
+  </data>
+  <data name="CONTENT_TYPE_EMPTY" xml:space="preserve">
+    <value>O tipo de conteúdo é obrigatório.</value>
+  </data>
+  <data name="FOLDER_EMPTY" xml:space="preserve">
+    <value>O nome da pasta é obrigatório.</value>
+  </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Erro desconhecido.</value>
+  </data>
+  <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
+    <value>Você não tem permissão para acessar esse recurso.</value>
   </data>
 </root>

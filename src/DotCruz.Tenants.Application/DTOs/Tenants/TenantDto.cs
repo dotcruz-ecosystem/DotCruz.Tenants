@@ -11,7 +11,7 @@ public sealed record TenantDto(
     TenantContactDto TenantContact,
     TenantAddressDto TenantAddress,
     TenantSubscriptionDto TenantSubscription,
-    TenantBrandingDto TenantBranding,
+    TenantBrandingDto? TenantBranding,
     string? SuspensionReason,
     DateTimeOffset CreatedAt,
     DateTimeOffset? UpdatedAt

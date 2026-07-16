@@ -2,6 +2,8 @@ using DotCruz.Shared.Security.Authorization;
 using DotCruz.Tenants.Api.Controllers.Base;
 using DotCruz.Tenants.Application.DTOs.Base;
 using DotCruz.Tenants.Application.DTOs.Tenants;
+using DotCruz.Tenants.Application.DTOs.Storage;
+using DotCruz.Tenants.Application.Abstractions.Services.Storage;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ActivateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.DeactivateTenant;
@@ -14,10 +16,12 @@ using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantBranding
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantById;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantBySlug;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetUploadUrl;
 using DotCruz.Tenants.Domain.Enums.Tenants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using DotCruz.Tenants.Application.Abstractions.Services.Storage.Responses;
 
 namespace DotCruz.Tenants.Api.Controllers.Tenants;
 
@@ -140,6 +144,19 @@ public class TenantController(IMediator mediator) : TenantBaseController
         var command = new UpdateTenantSubscriptionCommand(Id, request);
         await mediator.Send(command, cancellationToken);
         return NoContent();
+    }
+
+    [HttpPost]
+    [Route("{Id:guid}/upload-url")]
+    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [ProducesResponseType(typeof(StorageUploadUrlDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetUploadUrl([FromRoute] Guid Id, [FromBody] GetUploadUrlRequest request, CancellationToken cancellationToken)
+    {
+        var query = new GetUploadUrlQuery(Id, request.Purpose, request.FileName, request.ContentType);
+        var result = await mediator.Send(query, cancellationToken);
+        return Ok(result);
     }
 
     [HttpPatch]

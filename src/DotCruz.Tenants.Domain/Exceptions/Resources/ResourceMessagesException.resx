@@ -276,7 +276,19 @@
   <data name="HEADER_BACKGROUND_COLOR_INVALID" xml:space="preserve">
     <value>The header background color must be a valid hex color.</value>
   </data>
+  <data name="FILENAME_EMPTY" xml:space="preserve">
+    <value>The file name is required.</value>
+  </data>
+  <data name="CONTENT_TYPE_EMPTY" xml:space="preserve">
+    <value>The content type is required.</value>
+  </data>
+  <data name="FOLDER_EMPTY" xml:space="preserve">
+    <value>The folder name is required.</value>
+  </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Unknown Error.</value>
+  </data>
+  <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
+    <value>You can't access this resource.</value>
   </data>
 </root>

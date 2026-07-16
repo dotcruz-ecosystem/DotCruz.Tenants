@@ -79,6 +79,15 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The branding configuration is required..
+        /// </summary>
+        public static string BRANDING_REQUIRED {
+            get {
+                return ResourceManager.GetString("BRANDING_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The city is required..
         /// </summary>
         public static string CITY_EMPTY {
@@ -93,6 +102,15 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         public static string CONTACT_REQUIRED {
             get {
                 return ResourceManager.GetString("CONTACT_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The content type is required..
+        /// </summary>
+        public static string CONTENT_TYPE_EMPTY {
+            get {
+                return ResourceManager.GetString("CONTENT_TYPE_EMPTY", resourceCulture);
             }
         }
         
@@ -165,6 +183,33 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         public static string EXTERNAL_INTEGRATION_ERROR {
             get {
                 return ResourceManager.GetString("EXTERNAL_INTEGRATION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The file name is required..
+        /// </summary>
+        public static string FILENAME_EMPTY {
+            get {
+                return ResourceManager.GetString("FILENAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The folder name is required..
+        /// </summary>
+        public static string FOLDER_EMPTY {
+            get {
+                return ResourceManager.GetString("FOLDER_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The header background color must be a valid hex color..
+        /// </summary>
+        public static string HEADER_BACKGROUND_COLOR_INVALID {
+            get {
+                return ResourceManager.GetString("HEADER_BACKGROUND_COLOR_INVALID", resourceCulture);
             }
         }
         
@@ -394,6 +439,24 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The logo URL is required..
+        /// </summary>
+        public static string TENANT_LOGO_URL_EMPTY {
+            get {
+                return ResourceManager.GetString("TENANT_LOGO_URL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The logo URL must be a valid URL..
+        /// </summary>
+        public static string TENANT_LOGO_URL_INVALID {
+            get {
+                return ResourceManager.GetString("TENANT_LOGO_URL_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Tenant not found..
         /// </summary>
         public static string TENANT_NOT_FOUND {
@@ -439,6 +502,24 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The website URL is required..
+        /// </summary>
+        public static string TENANT_WEBSITE_URL_EMPTY {
+            get {
+                return ResourceManager.GetString("TENANT_WEBSITE_URL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The website URL must be a valid URL..
+        /// </summary>
+        public static string TENANT_WEBSITE_URL_INVALID {
+            get {
+                return ResourceManager.GetString("TENANT_WEBSITE_URL_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Unknown Error..
         /// </summary>
         public static string UNKNOWN_ERROR {
@@ -457,6 +538,33 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The unsubscribe URL is required..
+        /// </summary>
+        public static string UNSUBSCRIBE_URL_EMPTY {
+            get {
+                return ResourceManager.GetString("UNSUBSCRIBE_URL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The unsubscribe URL must be a valid URL..
+        /// </summary>
+        public static string UNSUBSCRIBE_URL_INVALID {
+            get {
+                return ResourceManager.GetString("UNSUBSCRIBE_URL_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a You can&apos;t access this resource..
+        /// </summary>
+        public static string USER_WITHOUT_PERMISSION_ACCESS_RESOURCE {
+            get {
+                return ResourceManager.GetString("USER_WITHOUT_PERMISSION_ACCESS_RESOURCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The ZIP code must contain exactly 8 digits..
         /// </summary>
         public static string ZIPCODE_INVALID {
@@ -471,54 +579,6 @@ namespace DotCruz.Tenants.Domain.Exceptions.Resources {
         public static string ZIPCODE_REQUIRED {
             get {
                 return ResourceManager.GetString("ZIPCODE_REQUIRED", resourceCulture);
-            }
-        }
-
-        public static string BRANDING_REQUIRED {
-            get {
-                return ResourceManager.GetString("BRANDING_REQUIRED", resourceCulture);
-            }
-        }
-
-        public static string TENANT_LOGO_URL_EMPTY {
-            get {
-                return ResourceManager.GetString("TENANT_LOGO_URL_EMPTY", resourceCulture);
-            }
-        }
-
-        public static string TENANT_LOGO_URL_INVALID {
-            get {
-                return ResourceManager.GetString("TENANT_LOGO_URL_INVALID", resourceCulture);
-            }
-        }
-
-        public static string TENANT_WEBSITE_URL_EMPTY {
-            get {
-                return ResourceManager.GetString("TENANT_WEBSITE_URL_EMPTY", resourceCulture);
-            }
-        }
-
-        public static string TENANT_WEBSITE_URL_INVALID {
-            get {
-                return ResourceManager.GetString("TENANT_WEBSITE_URL_INVALID", resourceCulture);
-            }
-        }
-
-        public static string UNSUBSCRIBE_URL_EMPTY {
-            get {
-                return ResourceManager.GetString("UNSUBSCRIBE_URL_EMPTY", resourceCulture);
-            }
-        }
-
-        public static string UNSUBSCRIBE_URL_INVALID {
-            get {
-                return ResourceManager.GetString("UNSUBSCRIBE_URL_INVALID", resourceCulture);
-            }
-        }
-
-        public static string HEADER_BACKGROUND_COLOR_INVALID {
-            get {
-                return ResourceManager.GetString("HEADER_BACKGROUND_COLOR_INVALID", resourceCulture);
             }
         }
     }

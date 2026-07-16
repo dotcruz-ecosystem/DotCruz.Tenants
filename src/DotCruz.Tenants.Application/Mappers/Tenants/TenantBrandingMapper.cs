@@ -5,8 +5,11 @@ namespace DotCruz.Tenants.Application.Mappers.Tenants;
 
 public static class TenantBrandingMapper
 {
-    public static TenantBrandingDto ToDto(this TenantBranding tenantBranding)
+    public static TenantBrandingDto? ToDto(this TenantBranding? tenantBranding)
     {
+        if (tenantBranding is null)
+            return null;
+
         return new TenantBrandingDto(
             tenantBranding.LogoUrl,
             tenantBranding.HeaderBackgroundColor,

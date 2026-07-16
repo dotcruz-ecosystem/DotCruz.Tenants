@@ -1,9 +1,11 @@
 using DotCruz.Tenants.Application.Abstractions.Data;
 using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
 using DotCruz.Tenants.Application.Abstractions.Services.CoreAuth;
+using DotCruz.Tenants.Application.Abstractions.Services.Storage;
 using DotCruz.Tenants.Infrastructure.Data;
 using DotCruz.Tenants.Infrastructure.Data.Repositories.Tenants;
 using DotCruz.Tenants.Infrastructure.Services.CoreAuth;
+using DotCruz.Tenants.Infrastructure.Services.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,6 +48,9 @@ public static class DependencyInjection
 
     private static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<CloudflareR2Settings>(configuration.GetSection(CloudflareR2Settings.SectionName));
+        services.AddScoped<IStorageService, CloudflareR2StorageService>();
+
         services.AddHttpClient<ICoreAuthClient, CoreAuthClient>(client =>
         {
             var baseAddress = configuration["CoreAuth:BaseAddress"];
