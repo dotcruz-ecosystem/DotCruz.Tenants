@@ -17,6 +17,7 @@ public class Tenant : BaseEntity
     public TenantContact Contact { get; private set; } = null!;
     public TenantAddress Address { get; private set; } = null!;
     public TenantSubscription Subscription { get; private set; } = null!;
+    public TenantBranding Branding { get; private set; } = null!;
     public SuspensionReason? SuspensionReason { get; private set; }
 
     private Tenant() { }
@@ -38,7 +39,8 @@ public class Tenant : BaseEntity
             Contact = contact,
             Address = address,
             Subscription = subscription ?? TenantSubscription.CreateTrial(),
-            Status = TenantStatus.PendingProvisioning
+            Status = TenantStatus.PendingProvisioning,
+            Branding = TenantBranding.Create(string.Empty, string.Empty, string.Empty, string.Empty)
         };
     }
 
@@ -99,6 +101,11 @@ public class Tenant : BaseEntity
     public void UpdateAddress(TenantAddress newAddress)
     {
         Address = newAddress ?? throw new ErrorOnValidationException(ResourceMessagesException.ADDRESS_REQUIRED);
+    }
+
+    public void UpdateBranding(TenantBranding newBranding)
+    {
+        Branding = newBranding ?? throw new ErrorOnValidationException(ResourceMessagesException.BRANDING_REQUIRED);
     }
 
     public void MarkPastDue()

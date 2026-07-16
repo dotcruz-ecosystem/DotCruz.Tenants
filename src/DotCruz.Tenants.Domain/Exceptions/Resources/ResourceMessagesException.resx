@@ -252,6 +252,30 @@
   <data name="EXTERNAL_INTEGRATION_ERROR" xml:space="preserve">
     <value>External integration error ({0}): {1}</value>
   </data>
+  <data name="BRANDING_REQUIRED" xml:space="preserve">
+    <value>The branding configuration is required.</value>
+  </data>
+  <data name="TENANT_LOGO_URL_EMPTY" xml:space="preserve">
+    <value>The logo URL is required.</value>
+  </data>
+  <data name="TENANT_LOGO_URL_INVALID" xml:space="preserve">
+    <value>The logo URL must be a valid URL.</value>
+  </data>
+  <data name="TENANT_WEBSITE_URL_EMPTY" xml:space="preserve">
+    <value>The website URL is required.</value>
+  </data>
+  <data name="TENANT_WEBSITE_URL_INVALID" xml:space="preserve">
+    <value>The website URL must be a valid URL.</value>
+  </data>
+  <data name="UNSUBSCRIBE_URL_EMPTY" xml:space="preserve">
+    <value>The unsubscribe URL is required.</value>
+  </data>
+  <data name="UNSUBSCRIBE_URL_INVALID" xml:space="preserve">
+    <value>The unsubscribe URL must be a valid URL.</value>
+  </data>
+  <data name="HEADER_BACKGROUND_COLOR_INVALID" xml:space="preserve">
+    <value>The header background color must be a valid hex color.</value>
+  </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Unknown Error.</value>
   </data>

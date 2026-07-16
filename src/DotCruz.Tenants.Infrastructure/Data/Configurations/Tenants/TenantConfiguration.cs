@@ -160,5 +160,30 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
                     .IsRequired();
             });
         });
+
+        builder.OwnsOne(t => t.Branding, b =>
+        {
+            b.ToJson("branding");
+
+            b.Property(br => br.LogoUrl)
+                .HasJsonPropertyName("logo_url")
+                .HasMaxLength(500)
+                .IsRequired();
+
+            b.Property(br => br.HeaderBackgroundColor)
+                .HasJsonPropertyName("header_background_color")
+                .HasMaxLength(20)
+                .IsRequired();
+
+            b.Property(br => br.Website)
+                .HasJsonPropertyName("website")
+                .HasMaxLength(255)
+                .IsRequired();
+
+            b.Property(br => br.UnsubscribeUrl)
+                .HasJsonPropertyName("unsubscribe_url")
+                .HasMaxLength(500)
+                .IsRequired();
+        });
     }
 }

@@ -33,6 +33,7 @@ public static class TenantMapper
             tenant.Contact.ToDto(),
             tenant.Address.ToDto(),
             tenant.Subscription.ToDto(),
+            tenant.Branding.ToDto(),
             tenant.SuspensionReason?.Value,
             tenant.CreatedAt,
             tenant.UpdatedAt

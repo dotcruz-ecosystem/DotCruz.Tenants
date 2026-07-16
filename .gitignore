@@ -56,3 +56,4 @@ $RECYCLE.BIN/
 appsettings.json
 appsettings.*.json
 !appsettings.Example.json
+.env

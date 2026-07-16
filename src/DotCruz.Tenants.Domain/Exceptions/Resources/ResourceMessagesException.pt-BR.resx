@@ -252,6 +252,30 @@
   <data name="EXTERNAL_INTEGRATION_ERROR" xml:space="preserve">
     <value>Erro de integração externa ({0}): {1}</value>
   </data>
+  <data name="BRANDING_REQUIRED" xml:space="preserve">
+    <value>A configuração de marca é obrigatória.</value>
+  </data>
+  <data name="TENANT_LOGO_URL_EMPTY" xml:space="preserve">
+    <value>A URL do logotipo é obrigatória.</value>
+  </data>
+  <data name="TENANT_LOGO_URL_INVALID" xml:space="preserve">
+    <value>A URL do logotipo deve ser uma URL válida.</value>
+  </data>
+  <data name="TENANT_WEBSITE_URL_EMPTY" xml:space="preserve">
+    <value>A URL do website é obrigatória.</value>
+  </data>
+  <data name="TENANT_WEBSITE_URL_INVALID" xml:space="preserve">
+    <value>A URL do website deve ser uma URL válida.</value>
+  </data>
+  <data name="UNSUBSCRIBE_URL_EMPTY" xml:space="preserve">
+    <value>A URL de descadastro é obrigatória.</value>
+  </data>
+  <data name="UNSUBSCRIBE_URL_INVALID" xml:space="preserve">
+    <value>A URL de descadastro deve ser uma URL válida.</value>
+  </data>
+  <data name="HEADER_BACKGROUND_COLOR_INVALID" xml:space="preserve">
+    <value>A cor de fundo do cabeçalho deve ser uma cor hexadecimal válida.</value>
+  </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Erro desconhecido.</value>
   </data>
