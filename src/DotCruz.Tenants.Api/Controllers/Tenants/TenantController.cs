@@ -28,6 +28,7 @@ namespace DotCruz.Tenants.Api.Controllers.Tenants;
 public class TenantController(IMediator mediator) : TenantBaseController
 {
     [HttpGet]
+    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
     [ProducesResponseType(typeof(SearchTenantsResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> Get([FromQuery] SearchTenantsQuery query, CancellationToken cancellationToken)
     {
