@@ -14,6 +14,10 @@ services:
       - Settings__Jwt__JwksUrl=${JWT_JWKS_URL}
       - Settings__ServiceAuth__Self__Name=Tenants
       - Settings__ServiceAuth__Self__Key=${TENANTS_SERVICE_KEY}
+      - Settings__AWS__Region=${AWS_REGION}
+      - Settings__AWS__AccessKey=${AWS_ACCESS_KEY_ID_VPS}
+      - Settings__AWS__SecretKey=${AWS_SECRET_ACCESS_KEY_VPS}
+      - Settings__AWS__SmtpParameterPath=${AWS_SMTP_PARAMETER_PATH}
     networks:
       - dotcruz_net
     deploy:

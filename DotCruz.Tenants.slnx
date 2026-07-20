@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Itens de Solução/">
     <File Path=".gitignore" />
+    <File Path="docker-compose.prod.yml" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/DotCruz.Tenants.Api/DotCruz.Tenants.Api.csproj" Id="9aed4353-fd3f-4b2d-b97e-a7e77cf08826" />

@@ -291,4 +291,22 @@
   <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
     <value>You can't access this resource.</value>
   </data>
+  <data name="SMTP_HOST_EMPTY" xml:space="preserve">
+    <value>The SMTP host is required.</value>
+  </data>
+  <data name="SMTP_PORT_INVALID" xml:space="preserve">
+    <value>The SMTP port must be greater than 0.</value>
+  </data>
+  <data name="SMTP_USERNAME_EMPTY" xml:space="preserve">
+    <value>The SMTP username is required.</value>
+  </data>
+  <data name="SMTP_PASSWORD_EMPTY" xml:space="preserve">
+    <value>The SMTP password is required.</value>
+  </data>
+  <data name="SMTP_FROM_NAME_EMPTY" xml:space="preserve">
+    <value>The SMTP sender name is required.</value>
+  </data>
+  <data name="SMTP_SETTINGS_REQUIRED" xml:space="preserve">
+    <value>SMTP settings are required.</value>
+  </data>
 </root>

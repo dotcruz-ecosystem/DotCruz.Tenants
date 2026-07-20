@@ -1,3 +1,6 @@
+using Amazon.SimpleSystemsManagement;
+using DotCruz.Tenants.Application.Abstractions.Services.Smtp;
+using DotCruz.Tenants.Infrastructure.Services.Smtp;
 using DotCruz.Tenants.Application.Abstractions.Data;
 using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
 using DotCruz.Tenants.Application.Abstractions.Services.CoreAuth;
@@ -50,6 +53,25 @@ public static class DependencyInjection
     {
         services.Configure<CloudflareR2Settings>(configuration.GetSection(CloudflareR2Settings.SectionName));
         services.AddScoped<IStorageService, CloudflareR2StorageService>();
+
+        services.Configure<AwsSettings>(configuration.GetSection(AwsSettings.SectionName));
+        services.AddScoped<ISmtpConfigService, SmtpConfigService>();
+
+        services.AddSingleton<IAmazonSimpleSystemsManagement>(sp =>
+        {
+            var awsSettings = configuration.GetSection(AwsSettings.SectionName).Get<AwsSettings>();
+            var config = new AmazonSimpleSystemsManagementConfig
+            {
+                RegionEndpoint = Amazon.RegionEndpoint.GetBySystemName(awsSettings?.Region ?? "us-east-1")
+            };
+
+            if (awsSettings != null && !string.IsNullOrEmpty(awsSettings.AccessKey) && !string.IsNullOrEmpty(awsSettings.SecretKey))
+            {
+                return new AmazonSimpleSystemsManagementClient(awsSettings.AccessKey, awsSettings.SecretKey, config);
+            }
+
+            return new AmazonSimpleSystemsManagementClient(config);
+        });
 
         services.AddHttpClient<ICoreAuthClient, CoreAuthClient>(client =>
         {

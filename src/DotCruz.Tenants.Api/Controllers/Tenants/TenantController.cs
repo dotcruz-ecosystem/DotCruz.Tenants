@@ -13,6 +13,7 @@ using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantAddress;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantContact;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantSubscription;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantBranding;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ConfigureTenantSmtp;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantById;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantBySlug;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
@@ -169,6 +170,19 @@ public class TenantController(IMediator mediator) : TenantBaseController
     public async Task<IActionResult> UpdateBranding([FromRoute] Guid Id, [FromBody] TenantBrandingDto request, CancellationToken cancellationToken)
     {
         var command = new UpdateTenantBrandingCommand(Id, request);
+        await mediator.Send(command, cancellationToken);
+        return NoContent();
+    }
+
+    [HttpPatch]
+    [Route("{Id:guid}/smtp")]
+    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> ConfigureSmtp([FromRoute] Guid Id, [FromBody] ConfigureTenantSmtpDto request, CancellationToken cancellationToken)
+    {
+        var command = new ConfigureTenantSmtpCommand(Id, request);
         await mediator.Send(command, cancellationToken);
         return NoContent();
     }
