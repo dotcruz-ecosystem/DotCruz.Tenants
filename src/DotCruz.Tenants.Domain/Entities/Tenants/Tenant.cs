@@ -11,6 +11,7 @@ namespace DotCruz.Tenants.Domain.Entities.Tenants;
 public class Tenant : BaseEntity
 {
     public Name Name { get; private set; } = null!;
+    public TenantType Type { get; private set; } = TenantType.Personal;
     public TenantStatus Status { get; private set; } = TenantStatus.PendingProvisioning;
     public TenantSlug Slug { get; private set; } = null!;
     public FiscalDocument Document { get; private set; } = null!;
@@ -28,12 +29,14 @@ public class Tenant : BaseEntity
         FiscalDocument document, 
         TenantContact contact, 
         TenantAddress address,
-        TenantSubscription? subscription = null)
+        TenantSubscription? subscription = null,
+        TenantType type = TenantType.Personal)
     {
 
         return new Tenant
         {
             Name = name,
+            Type = type,
             Slug = slug,
             Document = document,
             Contact = contact,
@@ -105,6 +108,11 @@ public class Tenant : BaseEntity
     public void UpdateBranding(TenantBranding newBranding)
     {
         Branding = newBranding ?? throw new ErrorOnValidationException(ResourceMessagesException.BRANDING_REQUIRED);
+    }
+
+    public void UpdateType(TenantType newType)
+    {
+        Type = newType;
     }
 
     public void MarkPastDue()

@@ -7,6 +7,7 @@ public sealed record TenantDto(
     string Name,
     string Slug,
     FiscalDocumentDto TenantDocument,
+    string Type,
     string Status,
     TenantContactDto TenantContact,
     TenantAddressDto TenantAddress,

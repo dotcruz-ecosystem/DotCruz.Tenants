@@ -24,6 +24,11 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
             .IsRequired()
             .HasMaxLength(100);
 
+        builder.Property(t => t.Type)
+            .HasConversion<string>()
+            .IsRequired()
+            .HasMaxLength(30);
+
         builder.Property(t => t.Status)
             .HasConversion<string>()
             .IsRequired()

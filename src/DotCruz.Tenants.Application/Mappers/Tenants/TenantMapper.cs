@@ -3,7 +3,6 @@ using DotCruz.Tenants.Application.Mappers.Fiscal;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using DotCruz.Tenants.Domain.Entities.Tenants;
 using DotCruz.Tenants.Domain.ValueObjects.Identity;
-using DotCruz.Tenants.Domain.ValueObjects.Location;
 using DotCruz.Tenants.Domain.ValueObjects.Tenants;
 
 namespace DotCruz.Tenants.Application.Mappers.Tenants;
@@ -29,6 +28,7 @@ public static class TenantMapper
             tenant.Name.Value,
             tenant.Slug.Value,
             tenant.Document.ToDto(),
+            tenant.Type.ToString(),
             tenant.Status.ToString(),
             tenant.Contact.ToDto(),
             tenant.Address.ToDto(),
@@ -37,6 +37,18 @@ public static class TenantMapper
             tenant.SuspensionReason?.Value,
             tenant.CreatedAt,
             tenant.UpdatedAt
+        );
+    }
+
+    public static TenantSummaryDto ToSummaryDto(this Tenant tenant)
+    {
+        return new TenantSummaryDto(
+            tenant.Id,
+            tenant.Name.Value,
+            tenant.Slug.Value,
+            tenant.Status.ToString(),
+            tenant.Type.ToString(),
+            tenant.Subscription.Plan.ToString()
         );
     }
 }

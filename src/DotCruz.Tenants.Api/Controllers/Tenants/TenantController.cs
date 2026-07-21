@@ -15,6 +15,7 @@ using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantSubscrip
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantBranding;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ConfigureTenantSmtp;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantById;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantSummary;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantBySlug;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetUploadUrl;
@@ -45,6 +46,18 @@ public class TenantController(IMediator mediator) : TenantBaseController
     public async Task<IActionResult> GetById([FromRoute] Guid Id, CancellationToken cancellationToken)
     {
         var query = new GetTenantByIdQuery(Id);
+        var result = await mediator.Send(query, cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("{Id:guid}/summary")]
+    [Authorize(Policy = SecurityPolicies.UserOrService)]
+    [ProducesResponseType(typeof(TenantSummaryDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetSummary([FromRoute] Guid Id, CancellationToken cancellationToken)
+    {
+        var query = new GetTenantSummaryQuery(Id);
         var result = await mediator.Send(query, cancellationToken);
         return Ok(result);
     }
