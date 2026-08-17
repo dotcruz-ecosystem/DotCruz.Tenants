@@ -1,4 +1,3 @@
-using DotCruz.Shared.Security.Context;
 using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Tenants;
 using DotCruz.Tenants.Application.Abstractions.Services.Storage;
 using DotCruz.Tenants.Application.Abstractions.Services.Storage.Responses;
@@ -13,24 +12,18 @@ public class GetUploadUrlQueryHandler : IRequestHandler<GetUploadUrlQuery, Stora
 {
     private readonly ITenantReadRepository _tenantReadRepository;
     private readonly IStorageService _storageService;
-    private readonly ISecurityContext _securityContext;
 
     public GetUploadUrlQueryHandler(
         ITenantReadRepository tenantReadRepository,
-        IStorageService storageService,
-        ISecurityContext securityContext
+        IStorageService storageService
     )
     {
         _tenantReadRepository = tenantReadRepository;
         _storageService = storageService;
-        _securityContext = securityContext;
     }
 
     public async Task<StorageUploadUrlDto> Handle(GetUploadUrlQuery request, CancellationToken cancellationToken)
     {
-        if (_securityContext.TenantId != request.TenantId)
-            throw new ForbiddenException(ResourceMessagesException.USER_WITHOUT_PERMISSION_ACCESS_RESOURCE);
-
         var tenantExists = await _tenantReadRepository.ExistsAsync(request.TenantId, cancellationToken);
         if (!tenantExists)
             throw new NotFoundException(ResourceMessagesException.TENANT_NOT_FOUND);

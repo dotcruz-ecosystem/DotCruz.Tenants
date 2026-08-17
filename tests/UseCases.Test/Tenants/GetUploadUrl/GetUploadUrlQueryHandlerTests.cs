@@ -4,7 +4,6 @@ using DotCruz.Tenants.Application.Abstractions.Services.Storage.Responses;
 using DotCruz.Tenants.Application.DTOs.Storage;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetUploadUrl;
 using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
-using DotCruz.Shared.Security.Context;
 using Moq;
 using System;
 using System.Threading;
@@ -34,11 +33,8 @@ public class GetUploadUrlQueryHandlerTests
         storageService.Setup(x => x.GeneratePresignedUploadUrlAsync(tenantId, folder, fileName, contentType, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new StorageUploadUrlDto(uploadUrl, publicUrl));
 
-        var securityContext = new Mock<ISecurityContext>();
-        securityContext.Setup(x => x.TenantId).Returns(tenantId);
-
         var query = new GetUploadUrlQuery(tenantId, purpose, fileName, contentType);
-        var handler = new GetUploadUrlQueryHandler(tenantReadRepository.Object, storageService.Object, securityContext.Object);
+        var handler = new GetUploadUrlQueryHandler(tenantReadRepository.Object, storageService.Object);
 
         var result = await handler.Handle(query, CancellationToken.None);
 
@@ -61,11 +57,8 @@ public class GetUploadUrlQueryHandlerTests
 
         var storageService = new Mock<IStorageService>();
 
-        var securityContext = new Mock<ISecurityContext>();
-        securityContext.Setup(x => x.TenantId).Returns(tenantId);
-
         var query = new GetUploadUrlQuery(tenantId, purpose, fileName, contentType);
-        var handler = new GetUploadUrlQueryHandler(tenantReadRepository.Object, storageService.Object, securityContext.Object);
+        var handler = new GetUploadUrlQueryHandler(tenantReadRepository.Object, storageService.Object);
 
         var act = () => handler.Handle(query, CancellationToken.None);
 
@@ -86,11 +79,8 @@ public class GetUploadUrlQueryHandlerTests
 
         var storageService = new Mock<IStorageService>();
 
-        var securityContext = new Mock<ISecurityContext>();
-        securityContext.Setup(x => x.TenantId).Returns(tenantId);
-
         var query = new GetUploadUrlQuery(tenantId, invalidPurpose, fileName, contentType);
-        var handler = new GetUploadUrlQueryHandler(tenantReadRepository.Object, storageService.Object, securityContext.Object);
+        var handler = new GetUploadUrlQueryHandler(tenantReadRepository.Object, storageService.Object);
 
         var act = () => handler.Handle(query, CancellationToken.None);
 
