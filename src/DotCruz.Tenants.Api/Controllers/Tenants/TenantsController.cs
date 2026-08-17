@@ -30,7 +30,7 @@ namespace DotCruz.Tenants.Api.Controllers.Tenants;
 public class TenantsController(IMediator mediator) : TenantBaseController
 {
     [HttpGet]
-    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [Authorize(Policy = SecurityPolicies.AdminOnly)]
     [ProducesResponseType(typeof(SearchTenantsResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> Get([FromQuery] SearchTenantsQuery query, CancellationToken cancellationToken)
     {
@@ -64,7 +64,7 @@ public class TenantsController(IMediator mediator) : TenantBaseController
 
     [HttpGet]
     [Route("{Slug}/slug")]
-    [Authorize(Policy = SecurityPolicies.UserOrService)]
+    [Authorize(Policy = SecurityPolicies.AdminOnly)]
     [ProducesResponseType(typeof(TenantDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetBySlug([FromRoute] string Slug, CancellationToken cancellationToken)
@@ -85,7 +85,7 @@ public class TenantsController(IMediator mediator) : TenantBaseController
 
     [HttpPatch]
     [Route("{Id:guid}/activate")]
-    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [Authorize(Policy = SecurityPolicies.AdminOnly)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
@@ -98,7 +98,7 @@ public class TenantsController(IMediator mediator) : TenantBaseController
 
     [HttpPatch]
     [Route("{Id:guid}/deactivate")]
-    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [Authorize(Policy = SecurityPolicies.AdminOnly)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
@@ -111,7 +111,7 @@ public class TenantsController(IMediator mediator) : TenantBaseController
 
     [HttpPatch]
     [Route("{Id:guid}/suspend")]
-    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [Authorize(Policy = SecurityPolicies.AdminOnly)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
@@ -150,7 +150,7 @@ public class TenantsController(IMediator mediator) : TenantBaseController
 
     [HttpPatch]
     [Route("{Id:guid}/subscription")]
-    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [Authorize(Policy = SecurityPolicies.AdminOnly)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
@@ -202,6 +202,7 @@ public class TenantsController(IMediator mediator) : TenantBaseController
 
     [HttpDelete]
     [Route("{Id:guid}")]
+    [Authorize(Policy = SecurityPolicies.AdminOnly)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
