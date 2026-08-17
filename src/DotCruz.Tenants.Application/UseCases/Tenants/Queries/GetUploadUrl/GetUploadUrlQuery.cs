@@ -3,6 +3,7 @@ using DotCruz.Tenants.Application.Abstractions.Services.Storage.Responses;
 using DotCruz.Tenants.Application.DTOs.Storage;
 using MediatR;
 using System;
+using DotCruz.Tenants.Application.Abstractions.Security;
 
 namespace DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetUploadUrl;
 
@@ -11,4 +12,4 @@ public sealed record GetUploadUrlQuery(
     UploadPurpose Purpose,
     string FileName,
     string ContentType
-) : IRequest<StorageUploadUrlDto>;
+) : IRequest<StorageUploadUrlDto>, ITenantScopedRequest;

@@ -22,6 +22,7 @@ public static class DependencyInjection
         services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(assembly);
+            config.AddOpenBehavior(typeof(TenantOwnershipBehavior<,>));
             config.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
     }
