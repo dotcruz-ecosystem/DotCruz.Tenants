@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.10" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.10" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
-    <PackageReference Include="DotCruz.Shared.Security" Version="1.0.7" />
+    <PackageReference Include="DotCruz.Shared.Security" Version="1.0.8" />
   </ItemGroup>
 
   <PropertyGroup>
