@@ -65,13 +65,13 @@ public static class OpenApiConfiguration
     {
         if (app.Environment.IsDevelopment())
         {
-            app.MapOpenApi();
+            app.MapOpenApi().AllowAnonymous();
             app.MapScalarApiReference(options =>
             {
                 options.WithTitle("DotCruz.Tenant API Documentation")
                        .WithTheme(ScalarTheme.DeepSpace)
                        .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
-            });
+            }).AllowAnonymous();
         }
 
         return app;
