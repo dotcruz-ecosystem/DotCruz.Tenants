@@ -27,7 +27,7 @@ using DotCruz.Tenants.Application.Abstractions.Services.Storage.Responses;
 
 namespace DotCruz.Tenants.Api.Controllers.Tenants;
 
-public class TenantController(IMediator mediator) : TenantBaseController
+public class TenantsController(IMediator mediator) : TenantBaseController
 {
     [HttpGet]
     [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
