@@ -52,5 +52,26 @@ public class TenantReadRepositoryBuilder
             .ReturnsAsync((items, totalCount));
     }
 
+    public void GetMembersAsync(Guid tenantId, IReadOnlyCollection<TenantMember> members, CancellationToken cancellationToken)
+    {
+        _tenantReadRepositoryMock
+            .Setup(r => r.GetMembersAsync(tenantId, cancellationToken))
+            .ReturnsAsync(members);
+    }
+
+    public void GetUserWorkspacesAsync(Guid userId, IReadOnlyCollection<(Tenant Tenant, TenantMember Member)> workspaces, CancellationToken cancellationToken)
+    {
+        _tenantReadRepositoryMock
+            .Setup(r => r.GetUserWorkspacesAsync(userId, cancellationToken))
+            .ReturnsAsync(workspaces);
+    }
+
+    public void GetUserWorkspacesByEmailAsync(string email, IReadOnlyCollection<(Tenant Tenant, TenantMember Member)> workspaces, CancellationToken cancellationToken)
+    {
+        _tenantReadRepositoryMock
+            .Setup(r => r.GetUserWorkspacesByEmailAsync(email, cancellationToken))
+            .ReturnsAsync(workspaces);
+    }
+
     public ITenantReadRepository Build() => _tenantReadRepositoryMock.Object;
 }

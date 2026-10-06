@@ -17,7 +17,8 @@ public static class TenantMapper
             TenantSlug.Create(tenantCommand.Slug),
             tenantCommand.TenantDocument.ToDomain(),
             tenantCommand.TenantContact.ToDomain(),
-            tenantCommand.TenantAddress.ToDomain()
+            tenantCommand.TenantAddress.ToDomain(),
+            adminEmail: DotCruz.Tenants.Domain.ValueObjects.Communication.Email.Create(tenantCommand.TenantAdminUser.AdminEmail)
         );
     }
 
@@ -27,11 +28,11 @@ public static class TenantMapper
             tenant.Id,
             tenant.Name.Value,
             tenant.Slug.Value,
-            tenant.Document.ToDto(),
+            tenant.Document != null ? tenant.Document.ToDto() : null,
             tenant.Type.ToString(),
             tenant.Status.ToString(),
-            tenant.Contact.ToDto(),
-            tenant.Address.ToDto(),
+            tenant.Contact != null ? tenant.Contact.ToDto() : null,
+            tenant.Address != null ? tenant.Address.ToDto() : null,
             tenant.Subscription.ToDto(),
             tenant.Branding.ToDto(),
             tenant.SuspensionReason?.Value,

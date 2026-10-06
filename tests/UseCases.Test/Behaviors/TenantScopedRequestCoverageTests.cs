@@ -1,11 +1,13 @@
 using DotCruz.Tenants.Application.Abstractions.Security;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ActivateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateWorkspace;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.DeactivateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.SuspendTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.TerminateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantSubscription;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantBySlug;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetUserWorkspaces;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
 using MediatR;
 using System.Reflection;
@@ -17,8 +19,10 @@ public class TenantScopedRequestCoverageTests
     private static readonly Type[] PlatformScopedRequests =
     [
         typeof(CreateTenantCommand),
+        typeof(CreateWorkspaceCommand),
         typeof(SearchTenantsQuery),
         typeof(GetTenantBySlugQuery),
+        typeof(GetUserWorkspacesQuery),
         typeof(ActivateTenantCommand),
         typeof(DeactivateTenantCommand),
         typeof(SuspendTenantCommand),

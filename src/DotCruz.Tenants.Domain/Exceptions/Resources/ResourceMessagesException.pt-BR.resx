@@ -309,4 +309,37 @@
   <data name="SMTP_SETTINGS_REQUIRED" xml:space="preserve">
     <value>As configurações de SMTP são obrigatórias.</value>
   </data>
+  <data name="TENANT_INACTIVE_CANNOT_ADD_MEMBER" xml:space="preserve">
+    <value>Não é possível adicionar membros a um tenant inativo ou encerrado.</value>
+  </data>
+  <data name="MEMBER_ALREADY_EXISTS" xml:space="preserve">
+    <value>O usuário já é um membro deste tenant.</value>
+  </data>
+  <data name="MAX_USERS_REACHED" xml:space="preserve">
+    <value>O número máximo de usuários para este plano de assinatura foi atingido.</value>
+  </data>
+  <data name="MEMBER_NOT_FOUND" xml:space="preserve">
+    <value>Membro não encontrado.</value>
+  </data>
+  <data name="CANNOT_REMOVE_LAST_OWNER" xml:space="preserve">
+    <value>Não é possível remover o último proprietário do tenant.</value>
+  </data>
+  <data name="MEMBER_STATUS_INVALID" xml:space="preserve">
+    <value>O status do membro é inválido para esta operação.</value>
+  </data>
+  <data name="MEMBER_ALREADY_ACTIVE" xml:space="preserve">
+    <value>O membro já está ativo.</value>
+  </data>
+  <data name="MEMBER_ALREADY_SUSPENDED" xml:space="preserve">
+    <value>O membro já está suspenso.</value>
+  </data>
+  <data name="ROLE_REQUIRED" xml:space="preserve">
+    <value>A função do membro é obrigatória.</value>
+  </data>
+  <data name="USER_ID_REQUIRED" xml:space="preserve">
+    <value>O ID do usuário é obrigatório.</value>
+  </data>
+  <data name="TENANT_ID_REQUIRED" xml:space="preserve">
+    <value>O ID do tenant é obrigatório.</value>
+  </data>
 </root>

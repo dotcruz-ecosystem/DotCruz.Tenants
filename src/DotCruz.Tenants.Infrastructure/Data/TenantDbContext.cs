@@ -8,6 +8,7 @@ namespace DotCruz.Tenants.Infrastructure.Data;
 public class TenantDbContext(DbContextOptions<TenantDbContext> options) : DbContext(options)
 {
     public DbSet<Tenant> Tenants { get; set; }
+    public DbSet<TenantMember> TenantMembers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

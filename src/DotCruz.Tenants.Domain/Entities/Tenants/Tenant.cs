@@ -14,14 +14,42 @@ public class Tenant : BaseEntity
     public TenantType Type { get; private set; } = TenantType.Personal;
     public TenantStatus Status { get; private set; } = TenantStatus.PendingProvisioning;
     public TenantSlug Slug { get; private set; } = null!;
-    public FiscalDocument Document { get; private set; } = null!;
-    public TenantContact Contact { get; private set; } = null!;
-    public TenantAddress Address { get; private set; } = null!;
+    public FiscalDocument? Document { get; private set; }
+    public TenantContact? Contact { get; private set; }
+    public TenantAddress? Address { get; private set; }
     public TenantSubscription Subscription { get; private set; } = null!;
     public TenantBranding? Branding { get; private set; } = null!;
     public SuspensionReason? SuspensionReason { get; private set; }
 
+    private readonly List<TenantMember> _members = [];
+    public IReadOnlyCollection<TenantMember> Members => _members.AsReadOnly();
+
     private Tenant() { }
+
+    public static Tenant CreateWorkspace(
+        Name name,
+        TenantSlug slug,
+        TenantType type = TenantType.Personal,
+        TenantSubscription? subscription = null,
+        DotCruz.Tenants.Domain.ValueObjects.Communication.Email? ownerEmail = null,
+        Guid? ownerUserId = null)
+    {
+        var tenant = new Tenant
+        {
+            Name = name,
+            Type = type,
+            Slug = slug,
+            Subscription = subscription ?? TenantSubscription.CreateTrial(),
+            Status = TenantStatus.Active
+        };
+
+        if (ownerEmail != null)
+        {
+            tenant.AddMember(ownerEmail, TenantRole.Owner, ownerUserId, MemberStatus.Active);
+        }
+
+        return tenant;
+    }
 
     public static Tenant Create(
         Name name, 
@@ -30,10 +58,11 @@ public class Tenant : BaseEntity
         TenantContact contact, 
         TenantAddress address,
         TenantSubscription? subscription = null,
-        TenantType type = TenantType.Personal)
+        TenantType type = TenantType.Personal,
+        DotCruz.Tenants.Domain.ValueObjects.Communication.Email? adminEmail = null,
+        Guid? adminUserId = null)
     {
-
-        return new Tenant
+        var tenant = new Tenant
         {
             Name = name,
             Type = type,
@@ -44,6 +73,58 @@ public class Tenant : BaseEntity
             Subscription = subscription ?? TenantSubscription.CreateTrial(),
             Status = TenantStatus.PendingProvisioning
         };
+
+        if (adminEmail != null)
+        {
+            tenant.AddMember(adminEmail, TenantRole.Owner, adminUserId, MemberStatus.Active);
+        }
+
+        return tenant;
+    }
+
+    public TenantMember AddMember(
+        DotCruz.Tenants.Domain.ValueObjects.Communication.Email email,
+        TenantRole role = TenantRole.Member,
+        Guid? userId = null,
+        MemberStatus status = MemberStatus.Invited)
+    {
+        if (Status == TenantStatus.Terminated || Status == TenantStatus.Inactive)
+            throw new ErrorOnValidationException(ResourceMessagesException.TENANT_INACTIVE_CANNOT_ADD_MEMBER);
+
+        ArgumentNullException.ThrowIfNull(email);
+
+        var existingMember = _members.FirstOrDefault(m => 
+            m.DeletedAt == null && 
+            string.Equals(m.Email.Value, email.Value, StringComparison.OrdinalIgnoreCase));
+
+        if (existingMember != null)
+            throw new ErrorOnValidationException(ResourceMessagesException.MEMBER_ALREADY_EXISTS);
+
+        var activeCount = _members.Count(m => m.DeletedAt == null && m.Status != MemberStatus.Suspended);
+        if (activeCount >= Subscription.Limits.MaxUsers)
+            throw new ErrorOnValidationException(ResourceMessagesException.MAX_USERS_REACHED);
+
+        var member = TenantMember.Create(Id, email, role, userId, status);
+        _members.Add(member);
+        Touch();
+
+        return member;
+    }
+
+    public void RemoveMember(Guid memberId)
+    {
+        var member = _members.FirstOrDefault(m => m.Id == memberId && m.DeletedAt == null)
+            ?? throw new NotFoundException(ResourceMessagesException.MEMBER_NOT_FOUND);
+
+        if (member.Role == TenantRole.Owner)
+        {
+            var activeOwners = _members.Count(m => m.Role == TenantRole.Owner && m.DeletedAt == null);
+            if (activeOwners <= 1)
+                throw new ErrorOnValidationException(ResourceMessagesException.CANNOT_REMOVE_LAST_OWNER);
+        }
+
+        member.Delete();
+        Touch();
     }
 
     public void Activate()
@@ -93,6 +174,11 @@ public class Tenant : BaseEntity
         if (Status == TenantStatus.Active || Status == TenantStatus.Trialing || Status == TenantStatus.PastDue)
             Status = newSubscription.Plan == PlanType.Trial ? TenantStatus.Trialing : TenantStatus.Active;
         
+    }
+
+    public void UpdateDocument(FiscalDocument newDocument)
+    {
+        Document = newDocument ?? throw new ErrorOnValidationException(ResourceMessagesException.DOCUMENT_REQUIRED);
     }
 
     public void UpdateContact(TenantContact newContact)

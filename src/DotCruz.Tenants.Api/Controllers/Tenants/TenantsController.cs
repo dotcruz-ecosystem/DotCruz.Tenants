@@ -19,6 +19,10 @@ using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantSummary;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantBySlug;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.SearchTenants;
 using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetUploadUrl;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.AddTenantMember;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.RemoveTenantMember;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetTenantMembers;
+using DotCruz.Tenants.Application.UseCases.Tenants.Queries.GetUserWorkspaces;
 using DotCruz.Tenants.Domain.Enums.Tenants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -211,5 +215,65 @@ public class TenantsController(IMediator mediator) : TenantBaseController
         var command = new TerminateTenantCommand(Id);
         await mediator.Send(command, cancellationToken);
         return NoContent();
+    }
+
+    [HttpPost]
+    [Route("{Id:guid}/members")]
+    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> AddMember([FromRoute] Guid Id, [FromBody] AddTenantMemberRequest request, CancellationToken cancellationToken)
+    {
+        var role = Enum.TryParse<TenantRole>(request.Role, true, out var parsedRole) ? parsedRole : TenantRole.Member;
+        var command = new AddTenantMemberCommand(Id, request.Email, role, request.UserId);
+        var result = await mediator.Send(command, cancellationToken);
+        return CreatedAtAction(nameof(GetMembers), new { Id }, result);
+    }
+
+    [HttpGet]
+    [Route("{Id:guid}/members")]
+    [Authorize(Policy = SecurityPolicies.UserOrService)]
+    [ProducesResponseType(typeof(IReadOnlyCollection<TenantMemberDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetMembers([FromRoute] Guid Id, CancellationToken cancellationToken)
+    {
+        var query = new GetTenantMembersQuery(Id);
+        var result = await mediator.Send(query, cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpDelete]
+    [Route("{Id:guid}/members/{memberId:guid}")]
+    [Authorize(Policy = SecurityPolicies.TenantAdminOrAdmin)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> RemoveMember([FromRoute] Guid Id, [FromRoute] Guid memberId, CancellationToken cancellationToken)
+    {
+        var command = new RemoveTenantMemberCommand(Id, memberId);
+        await mediator.Send(command, cancellationToken);
+        return NoContent();
+    }
+
+    [HttpGet]
+    [Route("users/{userId:guid}/workspaces")]
+    [Authorize(Policy = SecurityPolicies.UserOrService)]
+    [ProducesResponseType(typeof(IReadOnlyCollection<UserWorkspaceDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetUserWorkspaces([FromRoute] Guid userId, CancellationToken cancellationToken)
+    {
+        var query = new GetUserWorkspacesQuery(userId);
+        var result = await mediator.Send(query, cancellationToken);
+        return Ok(result);
+    }
+
+    [HttpPost]
+    [Route("workspaces")]
+    [Authorize(Policy = SecurityPolicies.UserOrService)]
+    [ProducesResponseType(typeof(UserWorkspaceDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> CreateWorkspace([FromBody] DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateWorkspace.CreateWorkspaceCommand command, CancellationToken cancellationToken)
+    {
+        var result = await mediator.Send(command, cancellationToken);
+        return CreatedAtAction(nameof(GetById), new { Id = result.TenantId }, result);
     }
 }

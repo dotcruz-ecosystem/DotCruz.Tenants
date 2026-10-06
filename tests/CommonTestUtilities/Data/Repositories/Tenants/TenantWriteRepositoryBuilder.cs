@@ -14,5 +14,11 @@ public class TenantWriteRepositoryBuilder
             .ReturnsAsync(tenant);
     }
 
+    public void GetByIdWithMembersToUpdate(Tenant tenant, CancellationToken cancellationToken)
+    {
+        _repository.Setup(x => x.GetByIdWithMembersToUpdateAsync(tenant.Id, cancellationToken))
+            .ReturnsAsync(tenant);
+    }
+
     public ITenantWriteRepository Build() => _repository.Object;
 }

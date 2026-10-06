@@ -54,13 +54,11 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
         {
             doc.Property(d => d.Number)
                 .HasColumnName("document_number")
-                .IsRequired()
                 .HasMaxLength(14);
 
             doc.Property(d => d.Type)
                 .HasColumnName("document_type")
                 .HasConversion<string>()
-                .IsRequired()
                 .HasMaxLength(4);
 
             doc.HasIndex(d => d.Number)
@@ -73,18 +71,15 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
                 .HasColumnName("contact_email")
                 .HasColumnType("citext")
                 .HasConversion(e => e.Value, v => Email.Create(v))
-                .IsRequired()
                 .HasMaxLength(255);
 
             c.OwnsOne(co => co.Phone, p =>
             {
                 p.Property(ph => ph.CountryCode)
-                    .HasColumnName("contact_phone_country_code")
-                    .IsRequired();
+                    .HasColumnName("contact_phone_country_code");
 
                 p.Property(ph => ph.NationalNumber)
                     .HasColumnName("contact_phone_national_number")
-                    .IsRequired()
                     .HasMaxLength(14);
             });
         });
@@ -190,5 +185,10 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
                 .HasMaxLength(500)
                 .IsRequired();
         });
+
+        builder.HasMany(t => t.Members)
+            .WithOne(m => m.Tenant)
+            .HasForeignKey(m => m.TenantId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

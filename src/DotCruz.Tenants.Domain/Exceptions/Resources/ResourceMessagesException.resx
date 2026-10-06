@@ -309,4 +309,37 @@
   <data name="SMTP_SETTINGS_REQUIRED" xml:space="preserve">
     <value>SMTP settings are required.</value>
   </data>
+  <data name="TENANT_INACTIVE_CANNOT_ADD_MEMBER" xml:space="preserve">
+    <value>Cannot add members to an inactive or terminated tenant.</value>
+  </data>
+  <data name="MEMBER_ALREADY_EXISTS" xml:space="preserve">
+    <value>The user is already a member of this tenant.</value>
+  </data>
+  <data name="MAX_USERS_REACHED" xml:space="preserve">
+    <value>The maximum number of users for this subscription plan has been reached.</value>
+  </data>
+  <data name="MEMBER_NOT_FOUND" xml:space="preserve">
+    <value>Member not found.</value>
+  </data>
+  <data name="CANNOT_REMOVE_LAST_OWNER" xml:space="preserve">
+    <value>Cannot remove the last owner of the tenant.</value>
+  </data>
+  <data name="MEMBER_STATUS_INVALID" xml:space="preserve">
+    <value>Member status is invalid for this operation.</value>
+  </data>
+  <data name="MEMBER_ALREADY_ACTIVE" xml:space="preserve">
+    <value>Member is already active.</value>
+  </data>
+  <data name="MEMBER_ALREADY_SUSPENDED" xml:space="preserve">
+    <value>Member is already suspended.</value>
+  </data>
+  <data name="ROLE_REQUIRED" xml:space="preserve">
+    <value>The member role is required.</value>
+  </data>
+  <data name="USER_ID_REQUIRED" xml:space="preserve">
+    <value>The user ID is required.</value>
+  </data>
+  <data name="TENANT_ID_REQUIRED" xml:space="preserve">
+    <value>The tenant ID is required.</value>
+  </data>
 </root>

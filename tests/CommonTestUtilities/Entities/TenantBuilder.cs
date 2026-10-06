@@ -80,5 +80,32 @@ public class TenantBuilder
         return this;
     }
 
+    public TenantBuilder WithMember(
+        DotCruz.Tenants.Domain.ValueObjects.Communication.Email? email = null,
+        DotCruz.Tenants.Domain.Enums.Tenants.TenantRole role = DotCruz.Tenants.Domain.Enums.Tenants.TenantRole.Member,
+        Guid? userId = null,
+        DotCruz.Tenants.Domain.Enums.Tenants.MemberStatus status = DotCruz.Tenants.Domain.Enums.Tenants.MemberStatus.Invited)
+    {
+        _tenant.AddMember(
+            email ?? CommonTestUtilities.ValueObjects.Communication.EmailBuilder.Build(),
+            role,
+            userId,
+            status
+        );
+        return this;
+    }
+
+    public TenantBuilder WithOwnerMember(
+        DotCruz.Tenants.Domain.ValueObjects.Communication.Email? email = null,
+        Guid? userId = null)
+    {
+        return WithMember(
+            email, 
+            DotCruz.Tenants.Domain.Enums.Tenants.TenantRole.Owner, 
+            userId, 
+            DotCruz.Tenants.Domain.Enums.Tenants.MemberStatus.Active
+        );
+    }
+
     public Tenant Build() => _tenant;
 }

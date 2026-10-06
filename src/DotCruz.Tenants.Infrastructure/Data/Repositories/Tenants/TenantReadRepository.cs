@@ -60,4 +60,41 @@ public class TenantReadRepository(TenantDbContext context) : BaseReadRepository<
 
         return (items, totalCount);
     }
+
+    public async Task<IReadOnlyCollection<TenantMember>> GetMembersAsync(Guid tenantId, CancellationToken cancellationToken)
+    {
+        var members = await _context.TenantMembers
+            .AsNoTracking()
+            .Where(m => m.TenantId == tenantId)
+            .OrderBy(m => m.CreatedAt)
+            .ToListAsync(cancellationToken);
+
+        return members.AsReadOnly();
+    }
+
+    public async Task<IReadOnlyCollection<(Tenant Tenant, TenantMember Member)>> GetUserWorkspacesAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        var list = await _context.TenantMembers
+            .AsNoTracking()
+            .Where(m => m.UserId == userId && m.Status != MemberStatus.Suspended)
+            .Include(m => m.Tenant)
+            .OrderBy(m => EF.Property<string>(m.Tenant, "Name"))
+            .ToListAsync(cancellationToken);
+
+        return list.Select(m => (m.Tenant, m)).ToList().AsReadOnly();
+    }
+
+    public async Task<IReadOnlyCollection<(Tenant Tenant, TenantMember Member)>> GetUserWorkspacesByEmailAsync(string email, CancellationToken cancellationToken)
+    {
+        var normalizedEmail = email.Trim().ToLowerInvariant();
+
+        var list = await _context.TenantMembers
+            .AsNoTracking()
+            .Where(m => m.Email == DotCruz.Tenants.Domain.ValueObjects.Communication.Email.Create(normalizedEmail) && m.Status != MemberStatus.Suspended)
+            .Include(m => m.Tenant)
+            .OrderBy(m => EF.Property<string>(m.Tenant, "Name"))
+            .ToListAsync(cancellationToken);
+
+        return list.Select(m => (m.Tenant, m)).ToList().AsReadOnly();
+    }
 }

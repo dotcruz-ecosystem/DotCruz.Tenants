@@ -16,4 +16,7 @@ public interface ITenantReadRepository : IBaseReadRepository<Tenant>
         PlanType? plan,
         string? searchTerm,
         CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<TenantMember>> GetMembersAsync(Guid tenantId, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<(Tenant Tenant, TenantMember Member)>> GetUserWorkspacesAsync(Guid userId, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<(Tenant Tenant, TenantMember Member)>> GetUserWorkspacesByEmailAsync(string email, CancellationToken cancellationToken);
 }

@@ -1,4 +1,4 @@
-﻿using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Base;
+using DotCruz.Tenants.Application.Abstractions.Data.Repositories.Base;
 using DotCruz.Tenants.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +6,7 @@ namespace DotCruz.Tenants.Infrastructure.Data.Repositories.Base;
 
 public class BaseReadRepository<TEntity>(TenantDbContext context) : IBaseReadRepository<TEntity> where TEntity : BaseEntity
 {
+    protected readonly TenantDbContext _context = context;
     protected readonly DbSet<TEntity> _dbSet = context.Set<TEntity>();
 
     public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken)

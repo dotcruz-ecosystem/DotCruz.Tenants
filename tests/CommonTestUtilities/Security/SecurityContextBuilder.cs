@@ -46,5 +46,16 @@ public class SecurityContextBuilder
         return this;
     }
 
+    public SecurityContextBuilder AsUser(Guid? userId = null, Guid? tenantId = null)
+    {
+        _securityContext.Setup(c => c.IsAuthenticatedService).Returns(false);
+        _securityContext.Setup(c => c.IsAuthenticatedUser).Returns(true);
+        _securityContext.Setup(c => c.UserId).Returns(userId ?? Guid.NewGuid());
+        _securityContext.Setup(c => c.TenantId).Returns(tenantId);
+        _securityContext.Setup(c => c.Roles).Returns([]);
+
+        return this;
+    }
+
     public ISecurityContext Build() => _securityContext.Object;
 }
