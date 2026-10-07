@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using DotCruz.Tenants.Domain.ValueObjects.Location;
+using DotCruz.Workspaces.Domain.ValueObjects.Location;
 
 namespace CommonTestUtilities.ValueObjects.Location;
 

@@ -1,7 +1,7 @@
 ﻿using CommonTestUtilities.ValueObjects.Communication;
-using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
-using DotCruz.Tenants.Domain.Exceptions.Resources;
-using DotCruz.Tenants.Domain.ValueObjects.Communication;
+using DotCruz.Workspaces.Domain.Exceptions.BaseExceptions;
+using DotCruz.Workspaces.Domain.Exceptions.Resources;
+using DotCruz.Workspaces.Domain.ValueObjects.Communication;
 
 namespace Domain.Test.ValueObjects.Communication;
 

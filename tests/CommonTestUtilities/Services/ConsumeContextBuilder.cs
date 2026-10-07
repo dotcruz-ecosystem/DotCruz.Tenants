@@ -1,4 +1,4 @@
-using MassTransit;
+﻿using MassTransit;
 using Moq;
 
 namespace CommonTestUtilities.Services;

@@ -1,7 +1,7 @@
 ﻿using CommonTestUtilities.ValueObjects.Location;
-using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
-using DotCruz.Tenants.Domain.Exceptions.Resources;
-using DotCruz.Tenants.Domain.ValueObjects.Location;
+using DotCruz.Workspaces.Domain.Exceptions.BaseExceptions;
+using DotCruz.Workspaces.Domain.Exceptions.Resources;
+using DotCruz.Workspaces.Domain.ValueObjects.Location;
 
 namespace Domain.Test.ValueObjects.Location;
 

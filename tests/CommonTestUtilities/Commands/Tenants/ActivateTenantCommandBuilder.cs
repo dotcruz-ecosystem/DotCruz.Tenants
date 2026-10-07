@@ -1,5 +1,5 @@
-using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ActivateTenant;
+﻿using Bogus;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.ActivateTenant;
 
 namespace CommonTestUtilities.Commands.Tenants;
 

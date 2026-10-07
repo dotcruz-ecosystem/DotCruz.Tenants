@@ -1,14 +1,14 @@
-using Bogus;
-using CommonTestUtilities.DTOs.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantAddress;
+﻿using Bogus;
+using CommonTestUtilities.DTOs.Workspaces;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.UpdateWorkspaceAddress;
 
 namespace CommonTestUtilities.Commands.Tenants;
 
-public class UpdateTenantAddressCommandBuilder
+public class UpdateWorkspaceAddressCommandBuilder
 {
-    public static UpdateTenantAddressCommand Build(
+    public static UpdateWorkspaceAddressCommand Build(
         Guid? id = null,
-        bool isTenantAddressNull = false,
+        bool isWorkspaceAddressNull = false,
         bool isStreetEmpty = false,
         bool isNumberEmpty = false,
         bool isNeighborhoodEmpty = false,
@@ -17,10 +17,10 @@ public class UpdateTenantAddressCommandBuilder
         bool isZipCodeEmpty = false
     )
     {
-        var faker = new Faker<UpdateTenantAddressCommand>()
-            .CustomInstantiator(f => new UpdateTenantAddressCommand(
+        var faker = new Faker<UpdateWorkspaceAddressCommand>()
+            .CustomInstantiator(f => new UpdateWorkspaceAddressCommand(
                 Id: id ?? Guid.NewGuid(),
-                TenantAddress: isTenantAddressNull ? null! : TenantAddressDtoBuilder.Build(
+                WorkspaceAddress: isWorkspaceAddressNull ? null! : WorkspaceAddressDtoBuilder.Build(
                     isStreetEmpty: isStreetEmpty,
                     isNumberEmpty: isNumberEmpty,
                     isNeighborhoodEmpty: isNeighborhoodEmpty,

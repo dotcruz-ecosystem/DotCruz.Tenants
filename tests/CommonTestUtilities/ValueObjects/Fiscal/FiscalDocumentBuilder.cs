@@ -1,7 +1,7 @@
-using Bogus;
+﻿using Bogus;
 using Bogus.Extensions.Brazil;
-using DotCruz.Tenants.Domain.Enums.Tenants;
-using DotCruz.Tenants.Domain.ValueObjects.Fiscal;
+using DotCruz.Workspaces.Domain.Enums.Workspaces;
+using DotCruz.Workspaces.Domain.ValueObjects.Fiscal;
 
 namespace CommonTestUtilities.ValueObjects.Fiscal;
 

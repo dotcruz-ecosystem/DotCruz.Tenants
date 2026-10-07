@@ -1,6 +1,6 @@
-using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateWorkspace;
-using DotCruz.Tenants.Domain.Enums.Tenants;
+﻿using Bogus;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.CreateWorkspace;
+using DotCruz.Workspaces.Domain.Enums.Workspaces;
 
 namespace CommonTestUtilities.Commands.Tenants;
 
@@ -12,7 +12,7 @@ public class CreateWorkspaceCommandBuilder
         bool isSlugEmpty = false,
         bool isSlugInvalid = false,
         bool isSlugReserved = false,
-        TenantType? type = null,
+        WorkspaceType? type = null,
         string? ownerEmail = null,
         bool isOwnerEmailInvalid = false
     )
@@ -41,7 +41,7 @@ public class CreateWorkspaceCommandBuilder
                 return new CreateWorkspaceCommand(
                     Name: name,
                     Slug: slug,
-                    Type: type ?? f.PickRandom<TenantType>(),
+                    Type: type ?? f.PickRandom<WorkspaceType>(),
                     OwnerEmail: email
                 );
             });

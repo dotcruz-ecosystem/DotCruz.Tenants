@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using DotCruz.Tenants.Domain.ValueObjects.Identity;
+using DotCruz.Workspaces.Domain.ValueObjects.Identity;
 
 namespace CommonTestUtilities.ValueObjects.Identity;
 

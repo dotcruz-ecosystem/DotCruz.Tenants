@@ -1,23 +1,23 @@
-using Bogus;
-using CommonTestUtilities.DTOs.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantContact;
+﻿using Bogus;
+using CommonTestUtilities.DTOs.Workspaces;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.UpdateWorkspaceContact;
 
 namespace CommonTestUtilities.Commands.Tenants;
 
-public class UpdateTenantContactCommandBuilder
+public class UpdateWorkspaceContactCommandBuilder
 {
-    public static UpdateTenantContactCommand Build(
+    public static UpdateWorkspaceContactCommand Build(
         Guid? id = null,
-        bool isTenantContactNull = false,
+        bool isWorkspaceContactNull = false,
         bool isEmailEmpty = false,
         bool isCountryCodeInvalid = false,
         bool isPhoneEmpty = false
     )
     {
-        var faker = new Faker<UpdateTenantContactCommand>()
-            .CustomInstantiator(f => new UpdateTenantContactCommand(
+        var faker = new Faker<UpdateWorkspaceContactCommand>()
+            .CustomInstantiator(f => new UpdateWorkspaceContactCommand(
                 Id: id ?? Guid.NewGuid(),
-                TenantContact: isTenantContactNull ? null! : TenantContactDtoBuilder.Build(
+                WorkspaceContact: isWorkspaceContactNull ? null! : WorkspaceContactDtoBuilder.Build(
                     isEmailEmpty: isEmailEmpty,
                     isCountryCodeInvalid: isCountryCodeInvalid,
                     isPhoneEmpty: isPhoneEmpty

@@ -1,5 +1,5 @@
-using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ProvisionPersonalWorkspace;
+﻿using Bogus;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.ProvisionPersonalWorkspace;
 
 namespace CommonTestUtilities.Commands.Tenants;
 

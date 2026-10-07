@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DotCruz.Tenants.Domain\DotCruz.Tenants.Domain.csproj" />
-    <ProjectReference Include="..\..\src\DotCruz.Tenants.Application\DotCruz.Tenants.Application.csproj" />
+    <ProjectReference Include="..\..\src\DotCruz.Workspaces.Domain\DotCruz.Workspaces.Domain.csproj" />
+    <ProjectReference Include="..\..\src\DotCruz.Workspaces.Application\DotCruz.Workspaces.Application.csproj" />
   </ItemGroup>
 
 </Project>

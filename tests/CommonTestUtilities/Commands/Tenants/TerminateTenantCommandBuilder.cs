@@ -1,5 +1,5 @@
-using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.TerminateTenant;
+﻿using Bogus;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.TerminateTenant;
 
 namespace CommonTestUtilities.Commands.Tenants;
 

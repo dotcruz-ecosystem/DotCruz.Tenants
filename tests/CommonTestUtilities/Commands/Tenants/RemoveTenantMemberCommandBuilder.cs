@@ -1,17 +1,17 @@
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.RemoveTenantMember;
+﻿using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.RemoveWorkspaceMember;
 
 namespace CommonTestUtilities.Commands.Tenants;
 
-public class RemoveTenantMemberCommandBuilder
+public class RemoveWorkspaceMemberCommandBuilder
 {
-    public static RemoveTenantMemberCommand Build(
-        Guid? tenantId = null,
+    public static RemoveWorkspaceMemberCommand Build(
+        Guid? WorkspaceId = null,
         Guid? memberId = null,
-        bool isTenantIdEmpty = false,
+        bool isWorkspaceIdEmpty = false,
         bool isMemberIdEmpty = false)
     {
-        return new RemoveTenantMemberCommand(
-            isTenantIdEmpty ? Guid.Empty : (tenantId ?? Guid.NewGuid()),
+        return new RemoveWorkspaceMemberCommand(
+            isWorkspaceIdEmpty ? Guid.Empty : (WorkspaceId ?? Guid.NewGuid()),
             isMemberIdEmpty ? Guid.Empty : (memberId ?? Guid.NewGuid())
         );
     }

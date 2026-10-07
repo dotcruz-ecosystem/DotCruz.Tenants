@@ -1,7 +1,7 @@
 ﻿using CommonTestUtilities.ValueObjects.Identity;
-using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
-using DotCruz.Tenants.Domain.Exceptions.Resources;
-using DotCruz.Tenants.Domain.ValueObjects.Identity;
+using DotCruz.Workspaces.Domain.Exceptions.BaseExceptions;
+using DotCruz.Workspaces.Domain.Exceptions.Resources;
+using DotCruz.Workspaces.Domain.ValueObjects.Identity;
 
 namespace Domain.Test.ValueObjects.Identity;
 

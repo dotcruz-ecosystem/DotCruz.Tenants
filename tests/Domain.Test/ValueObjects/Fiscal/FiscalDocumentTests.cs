@@ -1,7 +1,7 @@
-using CommonTestUtilities.ValueObjects.Fiscal;
-using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
-using DotCruz.Tenants.Domain.Exceptions.Resources;
-using DotCruz.Tenants.Domain.ValueObjects.Fiscal;
+﻿using CommonTestUtilities.ValueObjects.Fiscal;
+using DotCruz.Workspaces.Domain.Exceptions.BaseExceptions;
+using DotCruz.Workspaces.Domain.Exceptions.Resources;
+using DotCruz.Workspaces.Domain.ValueObjects.Fiscal;
 
 namespace Domain.Test.ValueObjects.Fiscal;
 

@@ -1,4 +1,4 @@
-using DotCruz.Tenants.Application.Abstractions.Data;
+﻿using DotCruz.Workspaces.Application.Abstractions.Data;
 using Moq;
 
 namespace CommonTestUtilities.Data;

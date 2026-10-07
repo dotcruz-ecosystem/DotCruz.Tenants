@@ -1,8 +1,8 @@
-using Bogus;
+﻿using Bogus;
 using CommonTestUtilities.DTOs.Fiscal;
-using CommonTestUtilities.DTOs.Tenants;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
-using DotCruz.Tenants.Domain.Enums.Tenants;
+using CommonTestUtilities.DTOs.Workspaces;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.CreateTenant;
+using DotCruz.Workspaces.Domain.Enums.Workspaces;
 
 namespace CommonTestUtilities.Commands.Tenants;
 
@@ -17,12 +17,12 @@ public class CreateTenantCommandBuilder
         bool isDocumentEmpty = false,
         bool isTypeInvalid = false,
 
-        bool isTenantContactNull = false,
+        bool isWorkspaceContactNull = false,
         bool isEmailEmpty = false,
         bool isCountryCodeInvalid = false,
         bool isPhoneEmpty = false,
 
-        bool isTenantAddressNull = false,
+        bool isWorkspaceAddressNull = false,
         bool isStreetEmpty = false,
         bool isNumberEmpty = false,
         bool isNeighborhoodEmpty = false,
@@ -48,13 +48,13 @@ public class CreateTenantCommandBuilder
                     isTypeInvalid: isTypeInvalid
                 ),
 
-                TenantContact: isTenantContactNull ? null! : TenantContactDtoBuilder.Build(
+                WorkspaceContact: isWorkspaceContactNull ? null! : WorkspaceContactDtoBuilder.Build(
                     isEmailEmpty: isEmailEmpty, 
                     isCountryCodeInvalid: isCountryCodeInvalid, 
                     isPhoneEmpty: isPhoneEmpty
                 ),
 
-                TenantAddress: isTenantAddressNull ? null! : TenantAddressDtoBuilder.Build(
+                WorkspaceAddress: isWorkspaceAddressNull ? null! : WorkspaceAddressDtoBuilder.Build(
                     isStreetEmpty: isStreetEmpty,
                     isNumberEmpty: isNumberEmpty,
                     isNeighborhoodEmpty: isNeighborhoodEmpty,
@@ -63,7 +63,7 @@ public class CreateTenantCommandBuilder
                     isZipCodeEmpty: isZipCodeEmpty
                 ),
 
-                TenantAdminUser: isTenantAdminUserNull ? null! : TenantAdminUserDtoBuilder.Build(
+                TenantAdminUser: isTenantAdminUserNull ? null! : WorkspaceAdminUserDtoBuilder.Build(
                     isAdminNameEmpty: isAdminUserNameEmpty,
                     isAdminNameInvalid: isAdminUserNameInvalid,
                     isAdminEmailEmpty: isAdminUserEmailEmpty,

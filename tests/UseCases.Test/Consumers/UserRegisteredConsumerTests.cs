@@ -1,7 +1,7 @@
-using CommonTestUtilities.Services;
+﻿using CommonTestUtilities.Services;
 using DotCruz.CoreAuth.Application.Interfaces.Services.Messaging.Messages;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ProvisionPersonalWorkspace;
-using DotCruz.Tenants.Infrastructure.Messaging.Consumers;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.ProvisionPersonalWorkspace;
+using DotCruz.Workspaces.Infrastructure.Messaging.Consumers;
 using Moq;
 
 namespace UseCases.Test.Consumers;

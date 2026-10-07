@@ -1,7 +1,7 @@
 ﻿using CommonTestUtilities.ValueObjects.Temporal;
-using DotCruz.Tenants.Domain.Exceptions.BaseExceptions;
-using DotCruz.Tenants.Domain.Exceptions.Resources;
-using DotCruz.Tenants.Domain.ValueObjects.Temporal;
+using DotCruz.Workspaces.Domain.Exceptions.BaseExceptions;
+using DotCruz.Workspaces.Domain.Exceptions.Resources;
+using DotCruz.Workspaces.Domain.ValueObjects.Temporal;
 
 namespace Domain.Test.ValueObjects.Temporal;
 

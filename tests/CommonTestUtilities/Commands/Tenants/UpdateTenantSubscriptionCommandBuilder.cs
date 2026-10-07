@@ -1,18 +1,18 @@
-using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantSubscription;
-using DotCruz.Tenants.Domain.Enums.Tenants;
+﻿using Bogus;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.UpdateWorkspaceSubscription;
+using DotCruz.Workspaces.Domain.Enums.Workspaces;
 
 namespace CommonTestUtilities.Commands.Tenants;
 
-public class UpdateTenantSubscriptionCommandBuilder
+public class UpdateWorkspaceSubscriptionCommandBuilder
 {
-    public static UpdateTenantSubscriptionCommand Build(
+    public static UpdateWorkspaceSubscriptionCommand Build(
         Guid? id = null,
         PlanType? plan = null
     )
     {
-        var faker = new Faker<UpdateTenantSubscriptionCommand>()
-            .CustomInstantiator(f => new UpdateTenantSubscriptionCommand(
+        var faker = new Faker<UpdateWorkspaceSubscriptionCommand>()
+            .CustomInstantiator(f => new UpdateWorkspaceSubscriptionCommand(
                 Id: id ?? Guid.NewGuid(),
                 Plan: plan ?? f.PickRandom<PlanType>()
             ));

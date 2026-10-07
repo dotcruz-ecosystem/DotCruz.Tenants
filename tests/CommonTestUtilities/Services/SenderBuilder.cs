@@ -1,4 +1,4 @@
-using MediatR;
+﻿using MediatR;
 using Moq;
 
 namespace CommonTestUtilities.Services;

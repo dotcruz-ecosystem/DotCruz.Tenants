@@ -1,4 +1,4 @@
-using DotCruz.Shared.Security.Context;
+﻿using DotCruz.Shared.Security.Context;
 using Moq;
 
 namespace CommonTestUtilities.Security;
@@ -18,40 +18,40 @@ public class SecurityContextBuilder
         _securityContext.Setup(c => c.IsAuthenticatedService).Returns(true);
         _securityContext.Setup(c => c.IsAuthenticatedUser).Returns(false);
         _securityContext.Setup(c => c.ServiceName).Returns(serviceName);
-        _securityContext.Setup(c => c.TenantId).Returns((Guid?)null);
+        _securityContext.Setup(c => c.WorkspaceId).Returns((Guid?)null);
         _securityContext.Setup(c => c.Roles).Returns([]);
 
         return this;
     }
 
-    public SecurityContextBuilder AsSuperAdmin(Guid? tenantId = null)
+    public SecurityContextBuilder AsSuperAdmin(Guid? WorkspaceId = null)
     {
         _securityContext.Setup(c => c.IsAuthenticatedService).Returns(false);
         _securityContext.Setup(c => c.IsAuthenticatedUser).Returns(true);
         _securityContext.Setup(c => c.UserId).Returns(Guid.NewGuid());
-        _securityContext.Setup(c => c.TenantId).Returns(tenantId);
+        _securityContext.Setup(c => c.WorkspaceId).Returns(WorkspaceId);
         _securityContext.Setup(c => c.Roles).Returns(["SuperAdmin"]);
 
         return this;
     }
 
-    public SecurityContextBuilder AsTenantAdmin(Guid? tenantId = null)
+    public SecurityContextBuilder AsTenantAdmin(Guid? WorkspaceId = null)
     {
         _securityContext.Setup(c => c.IsAuthenticatedService).Returns(false);
         _securityContext.Setup(c => c.IsAuthenticatedUser).Returns(true);
         _securityContext.Setup(c => c.UserId).Returns(Guid.NewGuid());
-        _securityContext.Setup(c => c.TenantId).Returns(tenantId ?? Guid.NewGuid());
+        _securityContext.Setup(c => c.WorkspaceId).Returns(WorkspaceId ?? Guid.NewGuid());
         _securityContext.Setup(c => c.Roles).Returns(["TenantAdmin"]);
 
         return this;
     }
 
-    public SecurityContextBuilder AsUser(Guid? userId = null, Guid? tenantId = null)
+    public SecurityContextBuilder AsUser(Guid? userId = null, Guid? WorkspaceId = null)
     {
         _securityContext.Setup(c => c.IsAuthenticatedService).Returns(false);
         _securityContext.Setup(c => c.IsAuthenticatedUser).Returns(true);
         _securityContext.Setup(c => c.UserId).Returns(userId ?? Guid.NewGuid());
-        _securityContext.Setup(c => c.TenantId).Returns(tenantId);
+        _securityContext.Setup(c => c.WorkspaceId).Returns(WorkspaceId);
         _securityContext.Setup(c => c.Roles).Returns([]);
 
         return this;

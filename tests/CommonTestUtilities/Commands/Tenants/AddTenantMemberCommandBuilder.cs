@@ -1,17 +1,17 @@
-using Bogus;
-using DotCruz.Tenants.Application.UseCases.Tenants.Commands.AddTenantMember;
-using DotCruz.Tenants.Domain.Enums.Tenants;
+﻿using Bogus;
+using DotCruz.Workspaces.Application.UseCases.Workspaces.Commands.AddWorkspaceMember;
+using DotCruz.Workspaces.Domain.Enums.Workspaces;
 
 namespace CommonTestUtilities.Commands.Tenants;
 
-public class AddTenantMemberCommandBuilder
+public class AddWorkspaceMemberCommandBuilder
 {
-    public static AddTenantMemberCommand Build(
-        Guid? tenantId = null,
+    public static AddWorkspaceMemberCommand Build(
+        Guid? WorkspaceId = null,
         string? email = null,
-        TenantRole role = TenantRole.Member,
+        WorkspaceRole role = WorkspaceRole.Member,
         Guid? userId = null,
-        bool isTenantIdEmpty = false,
+        bool isWorkspaceIdEmpty = false,
         bool isEmailEmpty = false,
         bool isEmailInvalid = false)
     {
@@ -23,8 +23,8 @@ public class AddTenantMemberCommandBuilder
         else if (isEmailInvalid)
             emailValue = "not-an-email";
 
-        return new AddTenantMemberCommand(
-            isTenantIdEmpty ? Guid.Empty : (tenantId ?? Guid.NewGuid()),
+        return new AddWorkspaceMemberCommand(
+            isWorkspaceIdEmpty ? Guid.Empty : (WorkspaceId ?? Guid.NewGuid()),
             emailValue,
             role,
             userId

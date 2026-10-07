@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using DotCruz.Tenants.Domain.ValueObjects.Temporal;
+using DotCruz.Workspaces.Domain.ValueObjects.Temporal;
 
 namespace CommonTestUtilities.ValueObjects.Temporal;
 

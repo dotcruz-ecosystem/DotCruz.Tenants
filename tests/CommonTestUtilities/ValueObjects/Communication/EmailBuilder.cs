@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using DotCruz.Tenants.Domain.ValueObjects.Communication;
+using DotCruz.Workspaces.Domain.ValueObjects.Communication;
 
 namespace CommonTestUtilities.ValueObjects.Communication;
 
