@@ -3,6 +3,7 @@ using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ActivateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.CreateWorkspace;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.DeactivateTenant;
+using DotCruz.Tenants.Application.UseCases.Tenants.Commands.ProvisionPersonalWorkspace;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.SuspendTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.TerminateTenant;
 using DotCruz.Tenants.Application.UseCases.Tenants.Commands.UpdateTenantSubscription;
@@ -20,6 +21,7 @@ public class TenantScopedRequestCoverageTests
     [
         typeof(CreateTenantCommand),
         typeof(CreateWorkspaceCommand),
+        typeof(ProvisionPersonalWorkspaceCommand),
         typeof(SearchTenantsQuery),
         typeof(GetTenantBySlugQuery),
         typeof(GetUserWorkspacesQuery),

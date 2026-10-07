@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DotCruz.Tenants.Application\DotCruz.Tenants.Application.csproj" />
+    <ProjectReference Include="..\..\src\DotCruz.Tenants.Infrastructure\DotCruz.Tenants.Infrastructure.csproj" />
     <ProjectReference Include="..\CommonTestUtilities\CommonTestUtilities.csproj" />
   </ItemGroup>
 

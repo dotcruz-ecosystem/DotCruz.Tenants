@@ -9,6 +9,9 @@ using DotCruz.Tenants.Infrastructure.Data;
 using DotCruz.Tenants.Infrastructure.Data.Repositories.Tenants;
 using DotCruz.Tenants.Infrastructure.Services.CoreAuth;
 using DotCruz.Tenants.Infrastructure.Services.Storage;
+using DotCruz.Tenants.Infrastructure.Messaging.Consumers;
+using DotCruz.Tenants.Infrastructure.Messaging.Settings;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +26,7 @@ public static class DependencyInjection
         AddUnitOfWork(services);
         AddDbContext(services, configuration);
         AddServices(services, configuration);
+        AddMessaging(services, configuration);
 
         return services;
     }
@@ -82,5 +86,37 @@ public static class DependencyInjection
             }
         })
         .AddServiceApiKeyPropagation();
+    }
+
+    private static void AddMessaging(IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<WorkspaceMessagingSettings>(configuration.GetSection(WorkspaceMessagingSettings.SectionName));
+        var messagingSettings = configuration.GetSection(WorkspaceMessagingSettings.SectionName).Get<WorkspaceMessagingSettings>()
+            ?? new WorkspaceMessagingSettings();
+
+        services.AddMassTransit(x =>
+        {
+            x.AddConsumer<UserRegisteredConsumer>();
+
+            if (messagingSettings.UseInMemory)
+            {
+                x.UsingInMemory((context, cfg) =>
+                {
+                    cfg.ConfigureEndpoints(context);
+                });
+            }
+            else
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(messagingSettings.Host, messagingSettings.Port, "/", h =>
+                    {
+                        h.Username(messagingSettings.Username);
+                        h.Password(messagingSettings.Password);
+                    });
+                    cfg.ConfigureEndpoints(context);
+                });
+            }
+        });
     }
 }

@@ -20,5 +20,6 @@ public class TenantWriteRepositoryBuilder
             .ReturnsAsync(tenant);
     }
 
+    public Mock<ITenantWriteRepository> Mock => _repository;
     public ITenantWriteRepository Build() => _repository.Object;
 }
