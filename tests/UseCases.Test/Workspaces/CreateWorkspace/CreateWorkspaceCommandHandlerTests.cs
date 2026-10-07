@@ -1,4 +1,4 @@
-﻿using CommonTestUtilities.Commands.Tenants;
+using CommonTestUtilities.Commands.Tenants;
 using CommonTestUtilities.Data;
 using CommonTestUtilities.Data.Repositories.Workspaces;
 using CommonTestUtilities.Security;
@@ -22,7 +22,7 @@ public class CreateWorkspaceCommandHandlerTests
 
         Assert.NotNull(result);
         Assert.NotEqual(Guid.Empty, result.WorkspaceId);
-        Assert.Equal(command.Name, result.TenantName);
+        Assert.Equal(command.Name, result.WorkspaceName);
         Assert.Equal(command.Slug, result.WorkspaceSlug);
         Assert.Equal(command.Type.ToString(), result.WorkspaceType);
         Assert.Equal(WorkspaceStatus.Active.ToString(), result.WorkspaceStatus);
@@ -42,7 +42,7 @@ public class CreateWorkspaceCommandHandlerTests
 
         Assert.NotNull(result);
         Assert.NotEqual(Guid.Empty, result.WorkspaceId);
-        Assert.Equal(command.Name, result.TenantName);
+        Assert.Equal(command.Name, result.WorkspaceName);
         Assert.Equal(command.Slug, result.WorkspaceSlug);
         Assert.Equal(WorkspaceRole.Owner.ToString(), result.Role);
     }

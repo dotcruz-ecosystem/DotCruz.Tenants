@@ -1,8 +1,8 @@
-﻿namespace DotCruz.Workspaces.Application.DTOs.Workspaces;
+namespace DotCruz.Workspaces.Application.DTOs.Workspaces;
 
 public sealed record UserWorkspaceDto(
     Guid WorkspaceId,
-    string TenantName,
+    string WorkspaceName,
     string WorkspaceSlug,
     string WorkspaceType,
     string WorkspaceStatus,

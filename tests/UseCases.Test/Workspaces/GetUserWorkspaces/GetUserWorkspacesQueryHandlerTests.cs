@@ -1,4 +1,4 @@
-﻿using CommonTestUtilities.Data.Repositories.Workspaces;
+using CommonTestUtilities.Data.Repositories.Workspaces;
 using CommonTestUtilities.Entities;
 using CommonTestUtilities.Queries.Workspaces;
 using DotCruz.Workspaces.Application.UseCases.Workspaces.Queries.GetUserWorkspaces;
@@ -33,7 +33,7 @@ public class GetUserWorkspacesQueryHandlerTests
         Assert.NotNull(result);
         var workspace = Assert.Single(result);
         Assert.Equal(Workspace.Id, workspace.WorkspaceId);
-        Assert.Equal(Workspace.Name.Value, workspace.TenantName);
+        Assert.Equal(Workspace.Name.Value, workspace.WorkspaceName);
         Assert.Equal(Workspace.Slug.Value, workspace.WorkspaceSlug);
         Assert.Equal(Workspace.Type.ToString(), workspace.WorkspaceType);
         Assert.Equal(Workspace.Status.ToString(), workspace.WorkspaceStatus);
