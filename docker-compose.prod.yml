@@ -21,6 +21,10 @@ services:
       - Settings__AWS__AccessKey=${AWS_ACCESS_KEY_ID_VPS}
       - Settings__AWS__SecretKey=${AWS_SECRET_ACCESS_KEY_VPS}
       - Settings__AWS__SmtpParameterPath=${AWS_SMTP_PARAMETER_PATH}
+      - Settings__WorkspaceMessaging__Host=${RABBITMQ_HOST:-dotcruz-rabbitmq}
+      - Settings__WorkspaceMessaging__Port=${RABBITMQ_PORT:-5672}
+      - Settings__WorkspaceMessaging__Username=${RABBITMQ_USER:-dotcruz}
+      - Settings__WorkspaceMessaging__Password=${RABBITMQ_PASS:-mudar123}
     networks:
       - dotcruz_net
     deploy:

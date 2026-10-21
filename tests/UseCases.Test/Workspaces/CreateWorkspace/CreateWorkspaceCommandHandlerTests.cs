@@ -28,7 +28,7 @@ public class CreateWorkspaceCommandHandlerTests
         Assert.Equal(WorkspaceStatus.Active.ToString(), result.WorkspaceStatus);
         Assert.Equal(WorkspaceRole.Owner.ToString(), result.Role);
         Assert.Equal(MemberStatus.Active.ToString(), result.MemberStatus);
-        Assert.Equal(PlanType.Trial.ToString(), result.Plan);
+        Assert.Equal(command.Type == WorkspaceType.Personal ? PlanType.Free.ToString() : PlanType.Trial.ToString(), result.Plan);
     }
 
     [Fact]

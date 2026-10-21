@@ -1,4 +1,4 @@
-﻿using DotCruz.Workspaces.Domain.Entities.Base;
+using DotCruz.Workspaces.Domain.Entities.Base;
 using DotCruz.Workspaces.Domain.Enums.Workspaces;
 using DotCruz.Workspaces.Domain.Exceptions.BaseExceptions;
 using DotCruz.Workspaces.Domain.Exceptions.Resources;
@@ -39,7 +39,7 @@ public class Workspace : BaseEntity
             Name = name,
             Type = type,
             Slug = slug,
-            Subscription = subscription ?? WorkspaceSubscription.CreateTrial(),
+            Subscription = subscription ?? (type == WorkspaceType.Personal ? WorkspaceSubscription.CreateFree() : WorkspaceSubscription.CreateTrial()),
             Status = WorkspaceStatus.Active
         };
 
@@ -58,7 +58,7 @@ public class Workspace : BaseEntity
         WorkspaceContact contact, 
         WorkspaceAddress address,
         WorkspaceSubscription? subscription = null,
-        WorkspaceType type = WorkspaceType.Personal,
+        WorkspaceType type = WorkspaceType.Enterprise,
         DotCruz.Workspaces.Domain.ValueObjects.Communication.Email? adminEmail = null,
         Guid? adminUserId = null)
     {
@@ -101,7 +101,7 @@ public class Workspace : BaseEntity
             throw new ErrorOnValidationException(ResourceMessagesException.MEMBER_ALREADY_EXISTS);
 
         var activeCount = _members.Count(m => m.DeletedAt == null && m.Status != MemberStatus.Suspended);
-        if (activeCount >= Subscription.Limits.MaxUsers)
+        if (Type != WorkspaceType.Personal && activeCount >= Subscription.Limits.MaxUsers)
             throw new ErrorOnValidationException(ResourceMessagesException.MAX_USERS_REACHED);
 
         var member = WorkspaceMember.Create(Id, email, role, userId, status);
